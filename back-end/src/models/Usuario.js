@@ -22,7 +22,7 @@ class Usuario extends Model{
     static associate(models){
         this.belongsTo(models.Estados, {foreignKey: "idEstado" });
         this.belongsTo(models.GeneroSexual, {foreignKey: "idGeneroSexual" });
-        this.belongsTo(models.Genero, {through: "tblUsuarioGenero" });
+        this.belongsToMany(models.Genero, {through: "tblUsuarioGenero" });
         this.belongsToMany(models.Jogo, {through: "tblUsuarioJogo"});
     } 
 }
