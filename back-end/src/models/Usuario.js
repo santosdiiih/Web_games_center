@@ -5,13 +5,13 @@ class Usuario extends Model{
         super.init(
             {
             nome: DataTypes.STRING,
-            dataDeNascimento: DataTypes.DATE,
+            data_de_nascimento: DataTypes.DATE,
             senha: DataTypes.STRING,
             email: DataTypes.STRING,
             nickname: DataTypes.STRING,
-            contaPremium: DataTypes.BOOLEAN,
-            idGeneroSexual: DataTypes.INTEGER,
-            idEstado: DataTypes.INTEGER,            
+            conta_premium: DataTypes.BOOLEAN,
+            id_sexo: DataTypes.INTEGER,
+            id_estado: DataTypes.INTEGER,            
         },
         {
             sequelize,
@@ -20,10 +20,10 @@ class Usuario extends Model{
         );        
     }
     static associate(models){
-        this.belongsTo(models.Estados, {foreignKey: "idEstado" });
-        this.belongsTo(models.GeneroSexual, {foreignKey: "idGeneroSexual" });
-        this.belongsToMany(models.Genero, {through: "tblUsuarioGenero" });
-        this.belongsToMany(models.Jogo, {through: "tblUsuarioJogo"});
+        this.belongsTo(models.Estado, {foreignKey: "id_estado" });
+        this.belongsTo(models.Sexo, {foreignKey: "id_sexo" });
+        // this.belongsToMany(models.Genero, {through: "tblUsuarioGenero" });
+        // this.belongsToMany(models.Jogo, {through: "tblUsuarioJogo"});
     } 
 }
 

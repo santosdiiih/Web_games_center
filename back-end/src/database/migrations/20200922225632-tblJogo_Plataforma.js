@@ -2,28 +2,28 @@
 
 module.exports = {
     up: async(queryInterface, Sequelize) => {
-        return queryInterface.createTable("tblUsuarioGenero", {
-            idUsuarioGenero: {
+        return queryInterface.createTable("tblJogo_Plataforma", {
+            idUsuariojogo: {
                 type: Sequelize.INTEGER,
                 primaryKey: true,
                 autoIncrement: true
             },
-            idUsuario: {
+            id_Jogo: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {
-                    model:'tblUsuario',
-                    key: 'idUsuario'
+                    model:'tblJogo',
+                    key: 'id'
                 },
                 onUpdate: "CASCADE",
                 onDelete: "CASCADE"
             },
-            idGenero: {
+            id_Plataforma: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {
-                    model:'tblGenero',
-                    key: 'idGenero'
+                    model:'tblPlataforma',
+                    key: 'id'
                 },
                 onUpdate: "CASCADE",
                 onDelete: "CASCADE"
@@ -40,6 +40,6 @@ module.exports = {
     },
 
     down: async(queryInterface, Sequelize) => {
-        return queryInterface.dropTable("tblUsuarioGenero", {})
+        return queryInterface.dropTable("tblJogoPlataforma", {})
     }
 };

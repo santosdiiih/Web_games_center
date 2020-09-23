@@ -14,7 +14,7 @@ class Plataforma extends Model {
     }
 
     static associate(models){
-        this.belongsToMany(models.Jogo, {through:"tblJogoPlataforma"});
+        // this.belongsToMany(models.Jogo, {through:"tblJogoPlataforma"});
     }
 }
 

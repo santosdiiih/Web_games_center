@@ -1,8 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 
-class Estado extends Model{
+class Estado extends Model {
     static init (sequelize){
-        super.init({
+        super.init(
+        {
            nome: DataTypes.STRING,
            sigla: DataTypes.STRING, 
         },

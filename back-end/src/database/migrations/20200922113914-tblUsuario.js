@@ -3,7 +3,7 @@
 module.exports = {
     up: async(queryInterface, Sequelize) => {
         return queryInterface.createTable("tblUsuario", {
-            idUsuario: {
+            id: {
                 type: Sequelize.INTEGER,
                 primaryKey: true,
                 autoIncrement: true
@@ -12,40 +12,44 @@ module.exports = {
                 type: Sequelize.STRING,
                 allowNull: false
             },
-            dataDeNascimento: {
+            data_de_nascimento: {
                 type: Sequelize.DATE,
                 allowNull: false
             },
             senha: {
-                type: Sequelize.STRING(16),
+                type: Sequelize.STRING(100),
                 allowNull:false
             },
             email: {
                 type: Sequelize.STRING(100),
-                allowNull:false
+                allowNull:false,
+                unique: true
             },
             nickname: {
                 type: Sequelize.STRING,
-                allowNull: false
+                allowNull: false,
+                unique: true
             },
-            contaPermium: {
+            conta_premium: {
                 type: Sequelize.BOOLEAN,
                 allowNull:false
             },
-            idGeneroSexual: {
+            id_sexo: {
                 type: Sequelize.INTEGER,
+                allowNull: false,
                 references: {
-                    model:'tblGeneroSexual',
-                    key: 'idGeneroSexual'
+                    model:'tblSexo',
+                    key: 'id'
                 },
                 onUpdate: "CASCADE",
                 onDelete: "CASCADE"
             },
-            idEstado: {
+            id_estado: {
                 type: Sequelize.INTEGER,
+                allowNull: false,
                 references: {
-                    model:'tblEstados',
-                    key: 'idEstado'
+                    model:'tblEstado',
+                    key: 'id'                    
                 },
                 onUpdate: "CASCADE",
                 onDelete: "CASCADE"

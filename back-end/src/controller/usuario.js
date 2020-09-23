@@ -6,8 +6,16 @@ const jwt = require("jsonwebtoken");
 
 module.exports = {
 
+    // Listar todos os usuarios
+    async list( request, response ) {
+        const usuario = await Usuario.findAll();
+
+        response.send( usuario );
+    },
+
+    //Criação de usuarios
     async store(request, response){
-        const { nome, anoDeNascimento, senha, email, nickname, contaPremium, idGeneroSexual, idEstado } = request.body;
+        const { nome, data_de_nascimento, senha, email, nickname, conta_premium, id_sexo, id_estado } = request.body;
 
         // Verificar se o usuario já existe
         let usuario = await Usuario.findOne({
@@ -21,17 +29,18 @@ module.exports = {
         });
 
         if ( usuario ) { 
-            return response.status( 400 ).send( { erro : "Usuario já cadastrados" } )
+            return response.status( 400 ).send( { erro : "Usuario já cadastrado" } )
         }
 
-        const senhaCripto = await bcrypt.hash(senha, 10)
+        const senhaCripto = await bcrypt.hash(senha, 10);
 
-        usuario = await Usuario.create({ nome, anoDeNascimento, senha: senhaCripto, email, nickname, contaPremium, idGeneroSexual, idEstado});
+        usuario = await Usuario.create({ nome, data_de_nascimento, senha: senhaCripto, email, nickname, conta_premium, id_sexo, id_estado});
 
         response.status(201).send({
             usuario: {
-                usuarioId: usuario.idUsuario,
                 nome: usuario.nome,
+                data_de_nascimento: usuario.data_de_nascimento,
+                email: usuario.email,
                 nickname: usuario.nickname
             }
         });

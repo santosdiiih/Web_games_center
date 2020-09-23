@@ -3,7 +3,7 @@
 module.exports = {
     up: async(queryInterface, Sequelize) => {
         return queryInterface.createTable("tblItens", {
-            idItens: {
+            id: {
                 type: Sequelize.INTEGER,
                 primaryKey: true,
                 autoIncrement: true
@@ -12,24 +12,28 @@ module.exports = {
                 type: Sequelize.STRING,
                 allowNull: false
             },
+            imagem: {
+                type: Sequelize.STRING,
+                allowNull: false
+            },
             valor:{
                 type: Sequelize.INTEGER,
                 allowNull:false
             },
-            quantidadeItem: {
+            quantida_de_Item: {
                 type: Sequelize.INTEGER,
                 allowNull: false
             },
-            descontoPremium: {
+            desconto_Premium: {
                 type: Sequelize.DOUBLE,
                 allowNull: false
             },
-            idLoja: {
+            id_Loja: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {
                     model: "tblLoja",
-                    key: "idLoja"
+                    key: "id"
                 },
                 onUpdate: "CASCADE",
                 onDelete: "CASCADE"

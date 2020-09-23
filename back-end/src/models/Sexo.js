@@ -1,19 +1,19 @@
 const { Model, DataTypes } = require("sequelize");
 
-class GeneroSexual extends Model{
+class Sexo extends Model{
     static init(sequelize){
         super.init({
             nome: DataTypes.STRING
         },
         {
             sequelize,
-            tableName: "tblGenerosexual"
+            tableName: "tblSexo"
         }
         );
     }
-    static associations(models){
+    static associate(models){
         this.hasMany(models.Usuario)
     }
 }
 
-module.exports = GeneroSexual;
+module.exports = Sexo;

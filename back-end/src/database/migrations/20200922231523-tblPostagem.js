@@ -2,30 +2,39 @@
 
 module.exports = {
     up: async(queryInterface, Sequelize) => {
-        return queryInterface.createTable("tblComentario", {
-            idComentario: {
+        return queryInterface.createTable("tblPostagem", {
+            id: {
                 type: Sequelize.INTEGER,
                 primaryKey: true,
                 autoIncrement: true
             },
-            comentario: {
+            descricao: {
                 type: Sequelize.TEXT,
                 allowNull: false
             },
-            idUsuario: {
+            qtd_Curtidas: {
+                type: Sequelize.INTEGER,
+            },
+            imagem_video: {
+                type: Sequelize.STRING(300),
+            },
+            hashtag: {
+                type: Sequelize.STRING(50),
+            },
+            id_Usuario: {
                 type: Sequelize.INTEGER,
                 references: {
                     model:'tblUsuario',
-                    key: 'idUsuario'
+                    key: 'id'
                 },
                 onUpdate: "CASCADE",
                 onDelete: "CASCADE"
             },
-            idPostagem: {
+            id_Jogo: {
                 type: Sequelize.INTEGER,
                 references: {
-                    model:'tblPostagem',
-                    key: 'idPostagem'
+                    model:'tblJogo',
+                    key: 'id'
                 },
                 onUpdate: "CASCADE",
                 onDelete: "CASCADE"
@@ -42,6 +51,6 @@ module.exports = {
     },
 
     down: async(queryInterface, Sequelize) => {
-        return queryInterface.dropTable("tblComentario", {})
+        return queryInterface.dropTable("tblPostagem", {})
     }
 };

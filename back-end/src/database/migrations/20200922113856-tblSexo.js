@@ -2,14 +2,15 @@
 
 module.exports = {
     up: async(queryInterface, Sequelize) => {
-        return queryInterface.createTable("tblJogo", {
-            idJogo: {
+        return queryInterface.createTable("tblSexo", {
+            id: {
                 type: Sequelize.INTEGER,
                 primaryKey: true,
                 autoIncrement: true
             },
+
             nome: {
-                type: Sequelize.STRING,
+                type: Sequelize.STRING(20),
                 allowNull: false
             },
             created_at: {
@@ -24,6 +25,6 @@ module.exports = {
     },
 
     down: async(queryInterface, Sequelize) => {
-        return queryInterface.dropTable("tblJogo", {})
+        return queryInterface.dropTable("tblSexo", {})
     }
 };
