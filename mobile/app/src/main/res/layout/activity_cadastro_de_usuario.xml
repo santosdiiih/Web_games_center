@@ -43,18 +43,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputName"
@@ -109,10 +106,31 @@
 
                     <EditText
                         android:id="@+id/nick_name"
+                        android:hint="@string/nickName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textCapWords"
-                        android:hint="@string/nickName"
+                        android:textStyle="bold"
+                        android:textSize="25sp"
+                        android:textColor="@color/colorPrimary"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/inputSenha"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_margin="8dp">
+
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapWords"
+                        android:hint="Email"
                         android:textStyle="bold"
                         android:textSize="25sp"
                         android:textColor="@color/colorPrimary"
@@ -130,13 +148,14 @@
 
                     <EditText
                         android:id="@+id/senha"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:inputType="textPassword"
                         android:hint="@string/senha"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:textSize="25sp"
                         android:textColor="@color/colorPrimary"
+
                         />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -154,7 +173,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
-                        android:hint="Cep:"
+                        android:hint="Cep"
                         android:textStyle="bold"
                         android:textSize="25sp"
                         android:textColor="@color/colorPrimary"
@@ -175,7 +194,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textCapWords"
-                        android:hint="cidade"
+                        android:hint="Cidade"
                         android:textStyle="bold"
                         android:textSize="25sp"
                         android:textColor="@color/colorPrimary"
@@ -196,21 +215,28 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textCapWords"
-                        android:hint="bairro"
+                        android:hint="Bairro"
                         android:textStyle="bold"
                         android:textSize="25sp"
                         android:textColor="@color/colorPrimary"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <Button
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="Enviar"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:textSize="20sp"
+                    android:background="@drawable/botao_inicial"/>
+
             </LinearLayout>
 
         </ScrollView>
 
     </LinearLayout>
-
-
-
-
 
 </LinearLayout>

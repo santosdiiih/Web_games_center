@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Web Games Center</string>
-    <string name="name"> Digite seu nome:</string>
-    <string name="idade"> Digite sua idade:</string>
+    <string name="name"> Digite seu nome </string>
+    <string name="idade"> Digite sua idade </string>
     <string name="bemVindo"> Seja Bem Vindo ao nosso Forum</string>
     <string name="entrar"> Entrar</string>
     <string name="cadastreSe"> Cadastre - se</string>
