@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_main)
 
         cadastreSe.setOnClickListener(this)
+        entrar.setOnClickListener(this)
 
         insertToolbar()
     }
@@ -28,9 +29,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         if (v.id == R.id.cadastreSe){
             val intent = Intent(this, cadastroDeUsuario::class.java)
-            intent.putExtra("operacao", Constants.OPERACOA_NOVO_CADASTRO)
+            intent.putExtra("operacao", Constants.OPERACAO_NOVO_CADASTRO)
             startActivity(intent)
         }
+        if(v.id == R.id.entrar){
+            val intent = Intent(this, loginDeUsuario::class.java)
+            intent.putExtra("operacao", Constants.OPERACAO_LOGIN)
+            startActivity(intent)
+        }
+
     }
 
 }
