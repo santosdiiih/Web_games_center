@@ -8,7 +8,7 @@ module.exports = {
                 primaryKey: true,
                 autoIncrement: true
             },
-            id_Jogo: {
+            id_jogo: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {
@@ -18,7 +18,7 @@ module.exports = {
                 onUpdate: "CASCADE",
                 onDelete: "CASCADE"
             },
-            id_Genero: {
+            id_genero: {
               type: Sequelize.INTEGER,
               allowNull: false,
               references: {

@@ -8,6 +8,10 @@ module.exports = {
                 primaryKey: true,
                 autoIncrement: true
             },
+            titulo: {
+                type: Sequelize.STRING(200),
+                allowNull: false
+            },
             descricao: {
                 type: Sequelize.TEXT,
                 allowNull: false
@@ -16,13 +20,15 @@ module.exports = {
                 type: Sequelize.INTEGER,
             },
             imagem_video: {
-                type: Sequelize.STRING(300),
+                type: Sequelize.STRING(500),
             },
             hashtag: {
                 type: Sequelize.STRING(50),
+                allowNull: false
             },
-            id_Usuario: {
+            usuario_id: {
                 type: Sequelize.INTEGER,
+                allowNull: false,
                 references: {
                     model:'tblUsuario',
                     key: 'id'
@@ -30,7 +36,7 @@ module.exports = {
                 onUpdate: "CASCADE",
                 onDelete: "CASCADE"
             },
-            id_Jogo: {
+            jogo_id: {
                 type: Sequelize.INTEGER,
                 references: {
                     model:'tblJogo',

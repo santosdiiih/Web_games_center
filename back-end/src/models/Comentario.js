@@ -3,7 +3,7 @@ const { Model, DataTypes } = require("sequelize");
 class Comentario extends Model{
     static init(sequelize){
         super.init({
-            comentario: DataTypes.TEXT
+            descricao: DataTypes.TEXT
         },
         {
             sequelize,
@@ -11,10 +11,9 @@ class Comentario extends Model{
         }
         );
     }
-    static associations(models){
-        this.hasMany(models.Usuario, {foreignKey: "idUsuario"});
-        this.hasMany(models.Postagens, {foreignKey: "idPostagem"});
-
+    static associate(models){
+        this.belongsTo(models.Postagem);
+        this.belongsTo(models.Usuario, {foreignKey: "usuario_id"});
     }
 }
 
