@@ -10,8 +10,8 @@ class Usuario extends Model{
             email: DataTypes.STRING,
             nickname: DataTypes.STRING,
             conta_premium: DataTypes.BOOLEAN,
-            id_sexo: DataTypes.INTEGER,
-            id_estado: DataTypes.INTEGER,            
+            sexo_id: DataTypes.INTEGER,
+            estado_id: DataTypes.INTEGER,            
         },
         {
             sequelize,
@@ -19,9 +19,13 @@ class Usuario extends Model{
         }
         );        
     }
-    static associate(models){
-        this.belongsTo(models.Estado, {foreignKey: "id_estado" });
-        this.belongsTo(models.Sexo, {foreignKey: "id_sexo" });
+    static associate(models){        
+        this.belongsTo(models.Sexo);
+        this.belongsTo(models.Estado);        
+        this.hasMany(models.Postagem, {foreignKey: "usuario_id"});
+        this.hasMany(models.Comentario);
+        
+        // this.hasMany( models.Postagem);
         // this.belongsToMany(models.Genero, {through: "tblUsuarioGenero" });
         // this.belongsToMany(models.Jogo, {through: "tblUsuarioJogo"});
     } 

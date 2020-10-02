@@ -8,11 +8,11 @@ module.exports = {
                 primaryKey: true,
                 autoIncrement: true
             },
-            comentario: {
+            descricao: {
                 type: Sequelize.TEXT,
                 allowNull: false
             },
-            id_Usuario: {
+            usuario_id: {
                 type: Sequelize.INTEGER,
                 references: {
                     model:'tblUsuario',
@@ -21,7 +21,7 @@ module.exports = {
                 onUpdate: "CASCADE",
                 onDelete: "CASCADE"
             },
-            id_Postagem: {
+            postagem_id: {
                 type: Sequelize.INTEGER,
                 references: {
                     model:'tblPostagem',

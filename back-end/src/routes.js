@@ -9,6 +9,8 @@ const sexoController = require("./controller/sexo");
 const jogoController = require("./controller/jogo");
 const generoController = require("./controller/genero");
 const plataformaController = require("./controller/plataforma");
+const postagemController = require("./controller/postagem");
+const comentarioController = require("./controller/comentario");
 
 
 
@@ -18,6 +20,8 @@ routes.post("/usuarios", usuarioController.store);
 routes.post("/jogo", jogoController.store);
 routes.post("/genero", generoController.store);
 routes.post("/plataforma", plataformaController.store);
+routes.post("/postagens",postagemController.store);
+routes.post("/postagens/:postId/comentario",comentarioController.store);
 
 routes.get("/usuarios", usuarioController.list);
 routes.get("/estados", estadoController.list);

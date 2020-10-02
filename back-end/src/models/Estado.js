@@ -14,7 +14,7 @@ class Estado extends Model {
         );
     }
     static associate(models){
-        this.hasMany(models.Usuario);
+        this.hasMany(models.Usuario, {foreignKey: "estado_id" });
     }
 }
 

@@ -34,7 +34,7 @@ module.exports = {
                 type: Sequelize.BOOLEAN,
                 allowNull:false
             },
-            id_sexo: {
+            sexo_id: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {
@@ -44,7 +44,7 @@ module.exports = {
                 onUpdate: "CASCADE",
                 onDelete: "CASCADE"
             },
-            id_estado: {
+            estado_id: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {

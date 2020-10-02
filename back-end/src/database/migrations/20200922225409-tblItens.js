@@ -28,7 +28,7 @@ module.exports = {
                 type: Sequelize.DOUBLE,
                 allowNull: false
             },
-            id_Loja: {
+            loja_id: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {

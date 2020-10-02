@@ -15,7 +15,7 @@ module.exports = {
 
     //Criação de usuarios
     async store(request, response){
-        const { nome, data_de_nascimento, senha, email, nickname, conta_premium, id_sexo, id_estado } = request.body;
+        const { nome, data_de_nascimento, senha, email, nickname, conta_premium, sexo_id, estado_id } = request.body;
 
         // Verificar se o usuario já existe
         let usuario = await Usuario.findOne({
@@ -34,7 +34,7 @@ module.exports = {
 
         const senhaCripto = await bcrypt.hash(senha, 10);
 
-        usuario = await Usuario.create({ nome, data_de_nascimento, senha: senhaCripto, email, nickname, conta_premium, id_sexo, id_estado});
+        usuario = await Usuario.create({ nome, data_de_nascimento, senha: senhaCripto, email, nickname, conta_premium, sexo_id, estado_id});
 
         response.status(201).send({
             usuario: {

@@ -7,6 +7,8 @@ const Usuario = require("../models/Usuario");
 const Jogo = require("../models/Jogo");
 const Genero = require("../models/Genero");
 const Plataforma = require("../models/Plataforma");
+const Postagem = require("../models/Postagem");
+const Comentario = require("../models/Comentario");
 
 // Criamo a conexão com os dados da configuração
 const conexao = new Sequelize(dbConfig);
@@ -18,6 +20,8 @@ Usuario.init(conexao);
 Jogo.init(conexao);
 Genero.init(conexao);
 Plataforma.init(conexao);
+Postagem.init(conexao);
+Comentario.init(conexao);
 
 // Inicializando as associações
 Usuario.associate(conexao.models);
@@ -26,6 +30,8 @@ Sexo.associate(conexao.models);
 Jogo.associate(conexao.models);
 Genero.associate(conexao.models);
 Plataforma.associate(conexao.models);
+Postagem.associate(conexao.models);
+Comentario.associate(conexao.models);
 
 // Exportamos a conexão
 module.exports = conexao;

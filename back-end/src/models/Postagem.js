@@ -4,22 +4,22 @@ class Postagem extends Model {
     static init (sequelize){
         super.init(
             {
-            dataHora: DataTypes.DATE,
+            titulo: DataTypes.STRING,
             descricao: DataTypes.TEXT,
-            qtdCurtidas: DataTypes.INTEGER,
+            // qtdCurtidas: DataTypes.INTEGER,
             imagem_video: DataTypes.STRING,
-            hashtags: DataTypes.STRING,
+            hashtag: DataTypes.STRING,
         },
         {
             sequelize,
-            tableName: "tblPostagem"
+            tableName: "tblPostagem",
         }
         );
     }
 
     static associate(models){
-        this.belongsTo(models.Usuario, {foreignKey: "idUsuario" });
-        this.belongsTo(models.Jogo, {foreignKey: "idJogo" });
+        this.belongsTo(models.Usuario, {foreignKey: "usuario_id"});
+        // this.belongsTo(models.Jogo, {foreignKey: "idJogo" });
         this.hasMany(models.Comentario);
     }
 }
