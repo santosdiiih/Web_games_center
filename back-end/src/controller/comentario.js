@@ -4,11 +4,29 @@ const Usuario = require("../models/Usuario");
 
 module.exports = {
 
-    async index (request, response){
+    async list( request, response ) {
+        const {postId} = request.params;
 
+        const postagem = await Postagem.findByPk(postId);
+
+        if(!postagem){
+            return response.status(404).send("Postagem não encontrada");
+        }
+
+        const comentarios = await postagem.getComentarios({
+            include: {
+                association: "Usuario",
+                as: "usuario",
+                attributes: ["id", "nickname"]
+            },
+            attributes: ["id", "descricao", "created_at"],
+            order: [["created_at", "DESC"]]
+        });
+
+        response.send(comentarios);
     },
 
-    // Criação da postagem
+    // Criação e comentario
     async store(request, response){
         const token = request.headers.authorization;
 
@@ -45,5 +63,6 @@ module.exports = {
  
         //  // Responder com status de criado
          response.status(201).send(comentario);
-    }
+    },
+    
 }

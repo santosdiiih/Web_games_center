@@ -5,9 +5,10 @@ class Itens extends Model {
         super.init(
             {
             nome: DataTypes.STRING,
+            imagem: DataTypes.STRING,
             valor: DataTypes.INTEGER,
-            qtde: DataTypes.INTEGER,
-            descontoPremium: DataTypes.DOUBLE
+            quantida_de_item: DataTypes.INTEGER,
+            desconto_premium: DataTypes.DOUBLE
         },
         {
             sequelize,
@@ -17,7 +18,7 @@ class Itens extends Model {
     }
 
     static associate(models){
-        this.belongsTo(models.Loja, {foreignKey: "idLoja" })
+        this.belongsTo(models.Loja, {foreignKey: "loja_id" })
     }
 }
 

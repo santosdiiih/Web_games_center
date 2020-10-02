@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 module.exports ={
 
     // Listar todos os generos sexuais 
-    async list(request, response){
+    async index(request, response){
         const sexo = await Sexo.findAll();
 
         response.send(sexo);

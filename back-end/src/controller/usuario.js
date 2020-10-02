@@ -44,5 +44,19 @@ module.exports = {
                 nickname: usuario.nickname
             }
         });
+    },
+
+    async searchById(request, response){
+        const { id } = request.params;
+
+        let usuario = await Usuario.findByPk(id, { raw : true});
+
+        if(!usuario){
+            return response.status(400).send({erro: "Usuário não encontrado"});
+        }
+
+        delete usuario.senha;
+
+        response.send(usuario);
     }
 }
