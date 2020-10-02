@@ -30,11 +30,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         if (v.id == R.id.cadastreSe){
             val intent = Intent(this, cadastroDeUsuario::class.java)
             intent.putExtra("operacao", Constants.OPERACAO_NOVO_CADASTRO)
+
             startActivity(intent)
         }
         if(v.id == R.id.entrar){
             val intent = Intent(this, loginDeUsuario::class.java)
             intent.putExtra("operacao", Constants.OPERACAO_LOGIN)
+
             startActivity(intent)
         }
 
