@@ -64,5 +64,31 @@ module.exports = {
         //  // Responder com status de criado
          response.status(201).send(comentario);
     },
+
+    async delete(request, response){
+        const token = request.headers.authorization;
+        const [Bearer, usuario_id] = token.split(" ");
+
+        // // Pegando o id do post apagar
+        // const {postId} = request.params;
+
+        // // Procura o post pelo id
+        // let postagem = await Postagem.findByPk( postId );
+        
+        const {idComentario} = request.params;
+        let comentario = await Comentario.findByPk( idComentario );
+
+        if(!comentario){
+            return response.status(404).send({erro: "Comentario não encontrada."})
+        }
+
+        if(comentario.usuario_id != usuario_id){
+            return response.status(401).send({erro: "Você não tem permissão para excluir este comentario"})
+        }
+        
+        await comentario.destroy();
+
+        response.status(204).send();
+    }
     
 }

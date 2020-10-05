@@ -7,7 +7,7 @@ module.exports ={
 
     // Listar todos itens
     async list(request, response){
-        const itens = await Itens.findAll()
+        const itens = await Itens.findAll();
 
         response.send(itens);
     },
@@ -37,10 +37,10 @@ module.exports ={
 
     async delete(req, res){
         //pegando o id do item a apagar
-        const { id } = req.params;
+        const { idItem } = req.params;
 
         //procura o item pelo id
-        let item = await Item.findByPk(id);
+        let item = await Itens.findByPk(idItem);
 
         //se a item não existir, retorna not found
         if(!item){
@@ -54,19 +54,20 @@ module.exports ={
     },
 
     //editar itens
-    async editar(req,res){
-        const {nome, valor, qtd, descontoPremium} = request.body;
-        const { id } = req.params;
-        let item = await Item.findByPk(id);
+    async editar(request,response){
+        const {nome, imagem, valor, quantida_de_item, desconto_premium} = request.body;
+        const { idItem } = request.params;
+        let itens = await Itens.findByPk(idItem);
         
-        await item.update({nome, valor, qtd, descontoPremium});
+        await itens.update({nome, imagem, valor, quantida_de_item, desconto_premium});
 
         response.status(201).send({
             itens: {
                 nome: itens.nome,
+                imagem: itens.imagem,
                 valor: itens.valor,
-                qtd: itens.qtd,
-                descontoPremium: itens.descontoPremium
+                quantida_de_Item: itens.quantida_de_item,
+                descontoPremium: itens.desconto_premium
             }
         });
     }

@@ -33,7 +33,9 @@ module.exports = {
     },
 
     async delete(request, response){
-
+        const token = request.headers.authorization;
+        const [Bearer, usuario_id] = token.split(" ");
+        // const id_usuario = request.
 
         // Pegando o id do post apagar
         const {id} = request.params;
@@ -45,12 +47,10 @@ module.exports = {
         if(!postagem){
             return response.status(404).send({erro: "Postagem não encontrada."})
         }
-        // Se o aluno logado for diferente do aluno que criou a postagem retorna não autorizado 
-        // if(postagem.usuario_id != usuario_id){
-        //     return res
-        //             .status(401)
-        //             .send({erro: "Você não tem permissão para apagar esta postagem."})
-        // }
+
+        if(postagem.usuario_id != usuario_id){
+            return response.status(401).send({erro: "Você não tem permissão para excluir está postagem"})
+        }
         
         await postagem.destroy();
 
