@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/blue"
+    android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
     >
 
@@ -70,7 +70,7 @@
                         android:hint="@string/name"
                         android:textStyle="bold"
                         android:textSize="25sp"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/white"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -223,6 +223,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
+                    android:id="@+id/butonCadastrar"
                     android:layout_width="300dp"
                     android:layout_height="60dp"
                     android:layout_marginTop="30dp"
