@@ -6,6 +6,7 @@ class Itens extends Model {
             {
             nome: DataTypes.STRING,
             imagem: DataTypes.STRING,
+            descricao: DataTypes.TEXT,
             valor: DataTypes.INTEGER,
             quantida_de_item: DataTypes.INTEGER,
             desconto_premium: DataTypes.DOUBLE

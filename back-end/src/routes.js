@@ -3,6 +3,8 @@ const express = require("express");
 // Criando o roteirizador
 const routes = express.Router();
 
+const authorizationMid = require("./middlewares/autorizacao");
+
 const usuarioController = require("./controller/usuario");
 const estadoController = require("./controller/estado");
 const sexoController = require("./controller/sexo");
@@ -13,18 +15,26 @@ const postagemController = require("./controller/postagem");
 const comentarioController = require("./controller/comentario");
 const lojaController = require("./controller/loja");
 const itemController = require("./controller/itens");
+const sessaoController = require("./controller/sessao");
 
+// Rotas publicas
+routes.post("/usuarios", usuarioController.store);
+routes.post("/sessao", sessaoController.store);
+routes.get("/estados", estadoController.list);
+routes.get("/sexo", sexoController.index);
+routes.get("/genero", generoController.list);
 
+// middleware de proteção de rotas
+routes.use(authorizationMid);
+
+// ***** Rotas Privadas ***** //
 // Rotas de estados
 routes.post("/estados", estadoController.store);
-routes.get("/estados", estadoController.list);
 
 // Rotas de sexo
 routes.post("/sexo", sexoController.store);
-routes.get("/sexo", sexoController.index);
 
 // Rotas de usuarios
-routes.post("/usuarios", usuarioController.store);
 routes.get("/usuarios", usuarioController.list);
 routes.get("/usuarios/:id", usuarioController.searchById);
 routes.put("/usuarios/:id", usuarioController.update);
@@ -35,7 +45,6 @@ routes.get("/jogo", jogoController.list);
 
 // Rota de generos
 routes.post("/genero", generoController.store);
-routes.get("/genero", generoController.list);
 
 // Rotas de plataforma
 routes.post("/plataforma", plataformaController.store);

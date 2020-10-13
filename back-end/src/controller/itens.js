@@ -17,17 +17,18 @@ module.exports ={
 
         const { itemId } = request.params;
 
-        const {nome, imagem, valor, quantida_de_item, desconto_premium} = request.body;
+        const {nome, imagem, descricao, valor, quantida_de_item, desconto_premium} = request.body;
 
         const loja = await Loja.findByPk(itemId);
         
         let itens = await loja.createIten(
-            {nome, imagem, valor, quantida_de_item, desconto_premium});
+            {nome, imagem, descricao, valor, quantida_de_item, desconto_premium});
 
         response.status(201).send({
             itens: {
                 nome: itens.nome,
                 imagem: itens.imagem,
+                descricao: itens.descricao,
                 valor: itens.valor,
                 quantida_de_Item: itens.quantida_de_item,
                 descontoPremium: itens.desconto_premium
@@ -55,16 +56,17 @@ module.exports ={
 
     //editar itens
     async editar(request,response){
-        const {nome, imagem, valor, quantida_de_item, desconto_premium} = request.body;
+        const {nome, imagem, descricao, valor, quantida_de_item, desconto_premium} = request.body;
         const { idItem } = request.params;
         let itens = await Itens.findByPk(idItem);
         
-        await itens.update({nome, imagem, valor, quantida_de_item, desconto_premium});
+        await itens.update({nome, imagem, descricao, valor, quantida_de_item, desconto_premium});
 
         response.status(201).send({
             itens: {
                 nome: itens.nome,
                 imagem: itens.imagem,
+                descricao: itens.descricao,
                 valor: itens.valor,
                 quantida_de_Item: itens.quantida_de_item,
                 descontoPremium: itens.desconto_premium

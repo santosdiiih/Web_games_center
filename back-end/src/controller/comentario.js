@@ -28,9 +28,7 @@ module.exports = {
 
     // Criação e comentario
     async store(request, response){
-        const token = request.headers.authorization;
-
-        const [Bearer, usuario_id] = token.split(" ");
+        const usuario_id = request.usuarioId;
         //  const usuario_id = request.usuarioId;
 
          // Recuperar o id da postagem
@@ -44,7 +42,7 @@ module.exports = {
  
          // Se não existir, retornar o erro
          if(!postagem){
-             return res.status(404).send({erro: "Postagem não encontrada."})
+             return response.status(404).send({erro: "Postagem não encontrada."})
          }
  
          // Criar o comentário usando o createComentario passamdo o id do usuario
@@ -66,8 +64,7 @@ module.exports = {
     },
 
     async delete(request, response){
-        const token = request.headers.authorization;
-        const [Bearer, usuario_id] = token.split(" ");
+        const usuario_id = request.usuarioId;
 
         // // Pegando o id do post apagar
         // const {postId} = request.params;
@@ -88,7 +85,7 @@ module.exports = {
         
         await comentario.destroy();
 
-        response.status(204).send();
+        response.status(204)
     }
     
 }

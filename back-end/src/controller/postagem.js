@@ -5,9 +5,7 @@ module.exports = {
 
     // Criação da postagem
     async store(request, response){
-        const token = request.headers.authorization;
-
-        const [Bearer, usuario_id] = token.split(" ");
+        const usuario_id = request.usuarioId;
 
 
         const {titulo, descricao, imagem_video, hashtag} = request.body;
@@ -33,8 +31,7 @@ module.exports = {
     },
 
     async delete(request, response){
-        const token = request.headers.authorization;
-        const [Bearer, usuario_id] = token.split(" ");
+        const usuario_id = request.usuarioId;
         // const id_usuario = request.
 
         // Pegando o id do post apagar
@@ -54,6 +51,6 @@ module.exports = {
         
         await postagem.destroy();
 
-        response.status(204).send();
+        response.status(204);
     }
 }

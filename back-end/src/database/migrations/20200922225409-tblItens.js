@@ -16,6 +16,10 @@ module.exports = {
                 type: Sequelize.STRING,
                 allowNull: false
             },
+            descricao:{
+                type: Sequelize.TEXT,
+                allowNull:false
+            },
             valor:{
                 type: Sequelize.INTEGER,
                 allowNull:false
