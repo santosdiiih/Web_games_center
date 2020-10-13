@@ -1,21 +1,21 @@
 package com.example.webgamescenter.data
 
-import com.example.webgamescenter.model.`Card-Jogo`
+import com.example.webgamescenter.model.Publicacao
 
-class datasource {
+class Datasource {
 
     companion object{
 
-        fun getJogos() : ArrayList<`Card-Jogo`>{
+        fun getCardPublicacao() : ArrayList<Publicacao>{
 
-            var jogos = ArrayList<`Card-Jogo`>()
+            var cardPublicacao = ArrayList<Publicacao>()
 
-            jogos.add(`Card-Jogo`(1, "pokemon", 2020-12-0,"lalala lend", 4 ))
-            jogos.add(`Card-Jogo`(2, "jubiscreide", 2020-12-0,"pokemon lend", 4 ))
-            jogos.add(`Card-Jogo`(3, "jb nascimento", 2020-12-0,"brawrs ralha", 4 ))
-            jogos.add(`Card-Jogo`(4, "luluzinha", 2020-12-0,"agora 2.0", 4 ))
+            cardPublicacao.add(Publicacao(1, "pokemon", 2020-12-0,"lalala lend", 4.0 ))
+            cardPublicacao.add(Publicacao(2, "jubiscreide", 2020-12-0,"pokemon lend", 4.0 ))
+            cardPublicacao.add(Publicacao(3, "jb nascimento", 2020-12-0,"brawrs ralha", 4.0 ))
+            cardPublicacao.add(Publicacao(4, "luluzinha", 2020-12-0,"agora 2.0", 4.0 ))
 
-            return jogos
+            return cardPublicacao
         }
     }
 }

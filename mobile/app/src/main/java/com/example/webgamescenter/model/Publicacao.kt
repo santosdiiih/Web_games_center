@@ -1,10 +1,10 @@
 package com.example.webgamescenter.model
 
-class `Card-Jogo`(
+class Publicacao(
     //var imagem: String,
     var code: Int,
     var name: String,
     var date: Int,
-    var text: String,
-    var rate: Int
+    var texto: String,
+    var rate: Double
 )

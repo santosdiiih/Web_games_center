@@ -34,7 +34,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blueFundo"
+        android:background="@color/colorPrimaryDark"
         android:orientation="vertical">
         
         <LinearLayout
@@ -102,11 +102,12 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/buttonLogin"
             android:layout_width="300dp"
             android:layout_height="60dp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/entrar"
+            android:text="login"
             android:textColor="@color/white"
             android:layout_gravity="center"
             android:textSize="20sp"

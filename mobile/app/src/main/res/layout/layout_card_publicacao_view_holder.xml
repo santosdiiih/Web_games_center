@@ -3,10 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="230dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    app:cardBackgroundColor="@color/blueFundo"
+    app:cardBackgroundColor="@color/colorPrimaryDark"
     app:cardCornerRadius="10dp"
     android:layout_marginLeft="6dp"
     android:layout_marginRight="6dp"
@@ -65,28 +65,21 @@
             android:layout_marginLeft="6dp"
             >
 
-            <EditText
-                android:id="@+id/text"
+            <TextView
+                android:id="@+id/texto"
                 android:layout_width="230dp"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Aqui sera a area da publica"/>
 
         </com.google.android.material.textfield.TextInputLayout>
-        <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
+        <CheckBox
+            android:id="@+id/nota"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             app:layout_constraintTop_toBottomOf="@+id/fotoUsuario"
-            style="?android:attr/ratingBarStyleIndicator"
-            android:numStars="1"
-            android:rating="1"
-            android:isIndicator="false"
-            android:stepSize="1"
-            android:scaleY="1.5"
-            android:scaleX="1.5"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginLeft="20dp"
-            android:transformPivotY="0dp"
-            android:transformPivotX="0dp"
+            tools:ignore="MissingConstraints"
+            android:text="Like"
             />
         <Button
             android:layout_width="100dp"
@@ -97,6 +90,7 @@
             android:text="Foto"
             android:background="@drawable/botao_inicial"
             android:layout_marginRight="16dp"
+            android:textColor="@color/white"
             app:layout_constraintRight_toRightOf="parent"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
