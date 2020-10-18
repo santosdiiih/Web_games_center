@@ -19,7 +19,7 @@ class Postagem extends Model {
 
     static associate(models){
         this.belongsTo(models.Usuario, {foreignKey: "usuario_id"});
-        // this.belongsTo(models.Jogo, {foreignKey: "idJogo" });
+        this.belongsTo(models.Jogo, {foreignKey: "idJogo" });
         this.hasMany(models.Comentario);
     }
 }

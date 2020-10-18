@@ -14,8 +14,8 @@ class Genero extends Model {
     }
 
     static associate(models){
-        // this.belongsToMany(models.Jogo, {through:"tblJogoGenero"});
-        // this.belongsToMany(models.Usuario, {through:"tblUsuarioGenero"});
+        this.belongsToMany(models.Jogo, {through:"tblJogoGenero"});
+        this.belongsToMany(models.Usuario, {through:"tblUsuarioGenero"});
     }
 }
 

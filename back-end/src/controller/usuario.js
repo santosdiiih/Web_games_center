@@ -3,6 +3,7 @@ const Usuario = require("../models/Usuario");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const authConfig = require("../config/auth.json");
+const Identificacao = require("../models/Identificacao");
 
 module.exports = {
 
@@ -15,26 +16,42 @@ module.exports = {
 
     //Criação de usuarios
     async store(request, response) {
+
         const { nome, data_de_nascimento, senha, email, nickname, conta_premium, sexo_id, estado_id } = request.body;
-
         // Verificar se o usuario já existe
-        let usuario = await Usuario.findOne({  
+        let usuario = await Usuario.findOne({
 
-            where:{
-                [Op.or] : [
-                    {email: email},
-                    {nickname: nickname}
+            where: {
+                [Op.or]: [
+                    { email: email },
+                    { nickname: nickname }
                 ]
             }
         });
 
-        if ( usuario ) { 
-            return response.status( 400 ).send( { erro : "Usuario já cadastrado" } )
+        if (usuario) {
+            return response.status(400).send({ erro: "Usuario já cadastrado" })
         }
 
         const senhaCripto = await bcrypt.hash(senha, 10);
 
-        usuario = await Usuario.create({ nome, data_de_nascimento, senha: senhaCripto, email, nickname, conta_premium, sexo_id, estado_id });
+        usuario = await Usuario.create({
+            nome,
+            data_de_nascimento,
+            senha: senhaCripto,
+            email,
+            nickname,
+            conta_premium,
+            sexo_id,
+            estado_id
+        });
+
+        const identificacao = nickname;
+        const usuario_id = usuario.id
+        seguir = await Identificacao.create({
+            identificacao,
+            usuario_id
+        });
 
         const token = jwt.sign({ usuarioId: usuario.id }, authConfig.secret);
 
@@ -47,6 +64,8 @@ module.exports = {
             },
             token
         });
+
+
     },
 
     async searchById(request, response) {
@@ -79,7 +98,7 @@ module.exports = {
                     ]
                 }
 
-                
+
             });
 
             if (usuario.email != email || usuario.nickname != nickname) {

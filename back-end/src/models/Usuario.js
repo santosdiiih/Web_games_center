@@ -24,6 +24,7 @@ class Usuario extends Model{
         this.belongsTo(models.Estado);        
         this.hasMany(models.Postagem, {foreignKey: "usuario_id"});
         this.hasMany(models.Comentario);
+        this.hasOne(models.Identificacao);
         
         // this.hasMany( models.Postagem);
         // this.belongsToMany(models.Genero, {through: "tblUsuarioGenero" });

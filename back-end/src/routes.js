@@ -24,8 +24,7 @@ routes.get("/estados", estadoController.list);
 routes.get("/sexo", sexoController.index);
 routes.get("/genero", generoController.list);
 
-// middleware de proteção de rotas
-routes.use(authorizationMid);
+
 
 // ***** Rotas Privadas ***** //
 // Rotas de estados
@@ -34,6 +33,8 @@ routes.post("/estados", estadoController.store);
 // Rotas de sexo
 routes.post("/sexo", sexoController.store);
 
+// middleware de proteção de rotas
+routes.use(authorizationMid);
 // Rotas de usuarios
 routes.get("/usuarios", usuarioController.list);
 routes.get("/usuarios/:id", usuarioController.searchById);

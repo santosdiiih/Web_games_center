@@ -14,10 +14,10 @@ class Jogo extends Model {
     }
 
     static associate(models){
-        // this.hasMany(models.Postagem);
-        // this.belongsToMany(models.Plataforma, {through: "tblJogoPlataforma"});
-        // this.belongsToMany(models.Genero, {through: "tblJogoGenero"});
-        // this.belongsToMany(models.Usuario, {through: "tblUsuarioJogo"});
+        this.hasMany(models.Postagem);
+        this.belongsToMany(models.Plataforma, {through: "tblJogoPlataforma"});
+        this.belongsToMany(models.Genero, {through: "tblJogoGenero"});
+        this.belongsToMany(models.Usuario, {through: "tblUsuarioJogo"});
     }
 }
 

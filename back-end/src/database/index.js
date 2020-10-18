@@ -11,6 +11,7 @@ const Postagem = require("../models/Postagem");
 const Comentario = require("../models/Comentario");
 const Loja = require("../models/Loja");
 const Item = require("../models/Itens");
+const Identificacao = require("../models/Identificacao");
 
 // Criamo a conexão com os dados da configuração
 const conexao = new Sequelize(dbConfig);
@@ -26,6 +27,7 @@ Postagem.init(conexao);
 Comentario.init(conexao);
 Loja.init(conexao);
 Item.init(conexao);
+Identificacao.init(conexao);
 
 // Inicializando as associações
 Usuario.associate(conexao.models);
@@ -38,6 +40,7 @@ Postagem.associate(conexao.models);
 Comentario.associate(conexao.models);
 Loja.associate(conexao.models);
 Item.associate(conexao.models);
+Identificacao.associate(conexao.models);
 
 // Exportamos a conexão
 module.exports = conexao;
