@@ -4,12 +4,12 @@ class Usuario extends Model{
     static init (sequelize){
         super.init(
             {
-            nome: DataTypes.STRING,
+            primeiro_nome: DataTypes.STRING,
+            ultimo_nome: DataTypes.STRING,
             data_de_nascimento: DataTypes.DATE,
             senha: DataTypes.STRING,
             email: DataTypes.STRING,
             nickname: DataTypes.STRING,
-            conta_premium: DataTypes.BOOLEAN,
             sexo_id: DataTypes.INTEGER,
             estado_id: DataTypes.INTEGER,            
         },

@@ -1,14 +1,18 @@
 'use strict';
 
 module.exports = {
-    up: async(queryInterface, Sequelize) => {
+    up: async (queryInterface, Sequelize) => {
         return queryInterface.createTable("tblUsuario", {
             id: {
                 type: Sequelize.INTEGER,
                 primaryKey: true,
                 autoIncrement: true
             },
-            nome: {
+            primeiro_nome: {
+                type: Sequelize.STRING,
+                allowNull: false
+            },
+            ultimo_nome: {
                 type: Sequelize.STRING,
                 allowNull: false
             },
@@ -18,11 +22,11 @@ module.exports = {
             },
             senha: {
                 type: Sequelize.STRING(100),
-                allowNull:false
+                allowNull: false
             },
             email: {
                 type: Sequelize.STRING(100),
-                allowNull:false,
+                allowNull: false,
                 unique: true
             },
             nickname: {
@@ -30,15 +34,11 @@ module.exports = {
                 allowNull: false,
                 unique: true
             },
-            conta_premium: {
-                type: Sequelize.BOOLEAN,
-                allowNull:false
-            },
             sexo_id: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {
-                    model:'tblSexo',
+                    model: 'tblSexo',
                     key: 'id'
                 },
                 onUpdate: "CASCADE",
@@ -48,8 +48,8 @@ module.exports = {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {
-                    model:'tblEstado',
-                    key: 'id'                    
+                    model: 'tblEstado',
+                    key: 'id'
                 },
                 onUpdate: "CASCADE",
                 onDelete: "CASCADE"
@@ -65,7 +65,7 @@ module.exports = {
         })
     },
 
-    down: async(queryInterface, Sequelize) => {
+    down: async (queryInterface, Sequelize) => {
         return queryInterface.dropTable("tblUsuario", {})
     }
 };
