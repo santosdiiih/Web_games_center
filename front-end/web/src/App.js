@@ -1,12 +1,9 @@
 import React from 'react';
-import Home from './pages/Home'
-import Index from './pages/index';
-import Jogos from './pages/Jogos';
-import Perfil from './pages/Perfil';
+import Router from './routes';
 
 function App() {
   return (
-    <Perfil />
+    <Router />
   );
 }
 

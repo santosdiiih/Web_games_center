@@ -77,6 +77,26 @@ function index() {
                                     </FormGroup>
                                     </Col>
                                 </Row>
+                                <Row form>
+                                    <Col md={6}>
+                                    <FormGroup>
+                                        <Label for="categoria" className="text-white">Selecione seu sexo</Label>
+                                        <Input type="select" name="categoria" id="categoria">
+                                            <option value="1">Feminino</option>
+                                            <option value="2">Masculino</option>
+                                            <option value="3">Outro</option>
+                                        </Input>
+                                    </FormGroup>
+                                    </Col>
+                                    <Col md={6}>
+                                    <FormGroup>
+                                        <Label for="categoria" className="text-white">Selecione seu estado</Label>
+                                        <Input type="select" name="categoria" id="categoria">
+                                            <option>Estados</option>
+                                        </Input>
+                                    </FormGroup>
+                                    </Col>
+                                </Row>
                                 <FormGroup className="text-center"> 
                                     <button className="input-button">Registrar</button>
                                 </FormGroup>
