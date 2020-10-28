@@ -12,14 +12,10 @@ module.exports ={
 
     // Criação de generos sexuais
     async store(request, response){
-        const {nome} = request.body;
+        const nome = request.body;
         
-        let sexo = await Sexo.create({nome});
+        let sexo = await Sexo.create(nome);
 
-        response.status(201).send({
-            sexo: {
-                nome: sexo.nome
-            }
-        });
+        response.status(201).send(sexo);
     }
 }

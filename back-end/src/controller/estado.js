@@ -5,8 +5,8 @@ const jwt = require("jsonwebtoken");
 module.exports ={
 
     // Listar todos estados
-    async list(request, response){
-        const estado = await Estado.findAll()
+    async list(request, response){        
+        const estado = await Estado.findAll();
 
         response.send(estado);
     },

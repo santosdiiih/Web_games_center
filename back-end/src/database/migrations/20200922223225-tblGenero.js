@@ -12,15 +12,10 @@ module.exports = {
                 type: Sequelize.STRING(40),
                 allowNull: false
             },
-
-            created_at: {
-                type: Sequelize.DATE,
+            link: {
+                type: Sequelize.STRING,
                 allowNull: false
             },
-            updated_at: {
-                type: Sequelize.DATE,
-                allowNull: false
-            }
         })
     },
 

@@ -5,8 +5,10 @@ class Genero extends Model {
         super.init(
             {
             nome: DataTypes.STRING,
+            link: DataTypes.STRING
         },
         {
+            timestamps: false,
             sequelize,
             tableName: "tblGenero"
         }

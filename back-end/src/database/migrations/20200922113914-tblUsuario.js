@@ -18,7 +18,7 @@ module.exports = {
             },
             data_de_nascimento: {
                 type: Sequelize.DATE,
-                allowNull: false
+                // allowNull: false
             },
             senha: {
                 type: Sequelize.STRING(100),
@@ -36,7 +36,7 @@ module.exports = {
             },
             sexo_id: {
                 type: Sequelize.INTEGER,
-                allowNull: false,
+                // allowNull: false,
                 references: {
                     model: 'tblSexo',
                     key: 'id'
@@ -46,7 +46,7 @@ module.exports = {
             },
             estado_id: {
                 type: Sequelize.INTEGER,
-                allowNull: false,
+                // allowNull: false,
                 references: {
                     model: 'tblEstado',
                     key: 'id'

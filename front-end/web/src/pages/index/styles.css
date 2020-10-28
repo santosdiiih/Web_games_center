@@ -86,7 +86,7 @@
   width: 195px;
   height: 25px;
 }
-.input-button{
+#input-button{
   width: 120px;
   height: 31px;
   margin-left: 15px;
@@ -96,7 +96,7 @@
   transition: background-color 0.2s;
   resize:none;
 }
-.input-button:hover{
+#input-button:hover{
   transition: 1s;
   background-color: var(--red-hover);
   cursor: pointer;

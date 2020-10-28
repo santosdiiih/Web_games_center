@@ -6,6 +6,7 @@ class Sexo extends Model{
             nome: DataTypes.STRING
         },
         {
+            timestamps: false,
             sequelize,
             tableName: "tblSexo"
         }

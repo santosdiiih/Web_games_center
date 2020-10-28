@@ -6,6 +6,8 @@ import Foto from '../../assets/Raster.jpeg';
 import './styles.css';
 
 function home() {
+
+    
   return (
       <>
         <div className="body">

@@ -11,13 +11,14 @@ module.exports = {
 
     //Criação de genero
     async store(request, response){
-        const { nome } = request.body;
+        const { nome, link } = request.body;
         
-        let genero = await Genero.create({nome});
+        let genero = await Genero.create({nome, link});
 
         response.status(201).send({
             genero: {
-                nome: genero.nome
+                nome: genero.nome,
+                link: genero.link
             }
         });
     }
