@@ -13,6 +13,7 @@ function Home() {
     useEffect(() =>{
         const retorno = Axios.get("https://api.rawg.io/api/games?key=e74d1dd729de47b6b16418e9c6b82fdd")
         retorno.then(reponse=>{
+            
             console.log(reponse.data.results);
         })
         
