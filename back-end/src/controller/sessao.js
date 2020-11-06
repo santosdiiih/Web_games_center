@@ -24,12 +24,7 @@ module.exports = {
 
         // Se existir e a senha estiver correta retorna ok com o token
         response.status(201).send({
-            usuario: {
-                usuarioId: usuario.id,
-                nome: usuario.nome,
-                email: usuario.email,
-                nickname: usuario.nickname,
-            },
+            usuario,
             token
         });
     }

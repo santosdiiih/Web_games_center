@@ -6,8 +6,11 @@ import logo from '../../assets/logo-type-web.png';
 import { api } from "../../services/api";
 // import { signIn } from "../../services/security";
 import { useHistory } from "react-router-dom";
+import { signIn } from "../../services/security";
 
 const FormLogin = () => {
+    const history = useHistory();
+    
     const [usuarioLogin, setUsuarioLogin] = useState({
         email: "",
         senha: ""
@@ -21,7 +24,9 @@ const FormLogin = () => {
 
             if (retorno.status === 201) {
                 // Logar na aplication
-                window.alert("logado com sucesso");
+                signIn(retorno.data);
+                //Redirecionar para a home
+                return history.push("/home");
             }
         } catch (erro) {
             if (erro.response) {
@@ -98,7 +103,7 @@ const Index = () => {
 
                 if (retorno.status === 201) {
                     // Vai logar na aplicação
-                    // signIn(retorno.data);
+                    signIn(retorno.data);
 
                     // Redirecionar para a tela home
                     return history.push("/Jogos");

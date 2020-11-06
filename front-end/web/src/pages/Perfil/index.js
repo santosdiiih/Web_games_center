@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button, Form,FormGroup, FormText, Input, Label } from 'reactstrap';
+import React, { useState, useEffect } from 'react';
+import { Button, Form, FormGroup, FormText, Input, Label } from 'reactstrap';
 import Foto from '../../assets/logo-type-web.png';
 import FotoPerfil from '../../assets/Perfil.jpg';
 import Menu from '../Components/ComponentsMenu/Menu';
@@ -7,9 +7,63 @@ import Menutopside from '../Components/Menutopside';
 
 
 import './styles.css';
+import { getUsuario } from '../../services/security';
+import { api } from '../../services/api';
 
 function Perfil() {
-  return <>
+
+    const usuarioSessao = getUsuario();
+
+    const [usuarioRegistrar, setUsuarioRegistrar] = useState({
+        email: usuarioSessao.email,
+        senha: "",
+        primeiro_nome: usuarioSessao.primeiro_nome,
+        ultimo_nome: usuarioSessao.ultimo_nome,
+        nickname: usuarioSessao.nickname,
+        sexo_id: "",
+        estado_id: "",
+        confirmesenha: ""
+    });
+
+    const [sexos, setSexos] = useState([]);
+    const [estados, setEstados] = useState([]);
+    
+    const handlerInput = (e) => {
+        setUsuarioRegistrar({ ...usuarioRegistrar, [e.target.id]: e.target.value });
+    }
+
+
+    useEffect(() => {
+        const listarSexos = async () => {
+            try {
+                const retorno = await api.get("/sexo");
+
+                setSexos(retorno.data)
+
+                console.log(retorno);
+
+            } catch (e) {
+                console.log(e)
+            }
+        }
+
+        listarSexos();
+    }, [])
+
+    useEffect(() => {
+        const listarEstados = async () => {
+            try {
+                const retorno = await api.get("/estados")
+
+                setEstados(retorno.data);
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        listarEstados();
+    }, [])
+
+    return <>
         <div className="page-wraper">
             <div className="content-wraper">
                 <div className="background-menu-lateral">
@@ -24,9 +78,13 @@ function Perfil() {
                                     <div><img src={FotoPerfil} className="foto-jogo-perfil" alt="" /></div>
                                     <div className="perfil-jogo-container-text text-white"><h6 className="text-center ">Joguinho 1</h6></div>
                                     <div className="svg-normal">
-                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sign-in-alt" class="svg-inline--fa fa-sign-in-alt fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M416 448h-84c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h84c17.7 0 32-14.3 32-32V160c0-17.7-14.3-32-32-32h-84c-6.6 0-12-5.4-12-12V76c0-6.6 5.4-12 12-12h84c53 0 96 43 96 96v192c0 53-43 96-96 96zm-47-201L201 79c-15-15-41-4.5-41 17v96H24c-13.3 0-24 10.7-24 24v96c0 13.3 10.7 24 24 24h136v96c0 21.5 26 32 41 17l168-168c9.3-9.4 9.3-24.6 0-34z"></path></svg></div>
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sign-in-alt" class="svg-inline--fa fa-sign-in-alt fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor" d="M416 448h-84c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h84c17.7 0 32-14.3 32-32V160c0-17.7-14.3-32-32-32h-84c-6.6 0-12-5.4-12-12V76c0-6.6 5.4-12 12-12h84c53 0 96 43 96 96v192c0 53-43 96-96 96zm-47-201L201 79c-15-15-41-4.5-41 17v96H24c-13.3 0-24 10.7-24 24v96c0 13.3 10.7 24 24 24h136v96c0 21.5 26 32 41 17l168-168c9.3-9.4 9.3-24.6 0-34z">
+                                            </path>
+                                        </svg>
+                                    </div>
                                 </div>
-                                
+
                             </div>
                         </section>
                         <section>
@@ -38,16 +96,46 @@ function Perfil() {
                                     <div className="perfil-input">
                                         <Form>
                                             <FormGroup>
-                                                <Label for="nome" className="text-white">Nome</Label>
-                                                <Input type="text" name="name" id="nome" placeholder="Seu nome" />
+                                                <Label for="nome" className="text-white">Primeiro Nome</Label>
+                                                <Input type="text" name="name" id="primeiro_nome" placeholder="Seu nome" value={usuarioRegistrar.primeiro_nome} onChange={handlerInput}/>
+                                            </FormGroup>
+                                            <FormGroup>
+                                                <Label for="nome" className="text-white">Ultimo Nome</Label>
+                                                <Input type="text" name="name" id="ultimo_nome" placeholder="Seu nome" value={usuarioRegistrar.ultimo_nome} onChange={handlerInput}/>
                                             </FormGroup>
                                             <FormGroup>
                                                 <Label for="nickname" className="text-white">Nick-Name</Label>
-                                                <Input type="text" name="nickname" id="nickname" placeholder="Seu Nick-Name" />
+                                                <Input type="text" name="nickname" id="nickname" placeholder="Seu Nick-Name" value={usuarioRegistrar.nickname} onChange={handlerInput} />
+                                            </FormGroup>
+                                            <FormGroup>
+                                                <Label for="nickname" className="text-white">Senha</Label>
+                                                <Input type="text" name="nickname" id="nickname" placeholder="Sua senha" value={usuarioRegistrar.senha} onChange={handlerInput}/>
+                                            </FormGroup>
+                                            <FormGroup>
+                                                <Label for="nickname" className="text-white">Ano De Nascimento</Label>
+                                                <Input type="text" name="nickname" id="nickname" placeholder="Ano de Nascimento"/>
                                             </FormGroup>
                                             <FormGroup>
                                                 <Label for="E-mail" className="text-white">E-Mail</Label>
-                                                <Input type="email" name="E-mail" id="E-mail" placeholder="Seu nome" />
+                                                <Input type="email" name="E-mail" id="email" placeholder="Seu nome" value={usuarioRegistrar.email} onChange={handlerInput}/>
+                                            </FormGroup>
+                                            <FormGroup>
+                                                <Label for="sexo" className="text-white">Selecione seu sexo</Label>
+                                                <Input onChange={handlerInput} type="select" name="sexo" id="sexo_id">
+                                                    <option value="">Selecione</option>
+                                                    {sexos.map(o => (
+                                                        <option value={o.id}>{o.nome}</option>
+                                                    ))}
+                                                </Input>
+                                            </FormGroup>
+                                            <FormGroup>
+                                                <Label for="categoria" className="text-white">Selecione seu estado</Label>
+                                                <Input onChange={handlerInput} type="select" name="categoria" id="estado_id">
+                                                    <option value="">Selecione seu estado</option>
+                                                    {estados.map(o => (
+                                                        <option value={o.id}>{o.nome}</option>
+                                                    ))}
+                                                </Input>
                                             </FormGroup>
                                             <div className="text-center">
                                                 <Button className="bg-primary text-center">Salvar Alterações</Button>
@@ -61,7 +149,7 @@ function Perfil() {
                 </div>
             </div>
         </div>
-  </>;
+    </>;
 }
 
 export default Perfil;
