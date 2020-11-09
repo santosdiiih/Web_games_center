@@ -6,7 +6,6 @@ class Postagem extends Model {
             {
             titulo: DataTypes.STRING,
             descricao: DataTypes.TEXT,
-            // qtdCurtidas: DataTypes.INTEGER,
             imagem_video: DataTypes.STRING,
             hashtag: DataTypes.STRING,
         },

@@ -10,7 +10,7 @@ module.exports = {
             },
             titulo: {
                 type: Sequelize.STRING(200),
-                allowNull: false
+                // allowNull: false
             },
             descricao: {
                 type: Sequelize.TEXT,
@@ -24,7 +24,7 @@ module.exports = {
             },
             hashtag: {
                 type: Sequelize.STRING(50),
-                allowNull: false
+                // allowNull: false
             },
             usuario_id: {
                 type: Sequelize.INTEGER,
@@ -36,15 +36,15 @@ module.exports = {
                 onUpdate: "CASCADE",
                 onDelete: "CASCADE"
             },
-            jogo_id: {
-                type: Sequelize.INTEGER,
-                references: {
-                    model:'tblJogo',
-                    key: 'id'
-                },
-                onUpdate: "CASCADE",
-                onDelete: "CASCADE"
-            },
+            // jogo_id: {
+            //     type: Sequelize.INTEGER,
+            //     references: {
+            //         model:'tblJogo',
+            //         key: 'id'
+            //     },
+            //     onUpdate: "CASCADE",
+            //     onDelete: "CASCADE"
+            // },
             created_at: {
                 type: Sequelize.DATE,
                 allowNull: false
