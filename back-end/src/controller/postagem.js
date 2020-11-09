@@ -20,7 +20,7 @@ module.exports = {
         let postagens = await Postagem.findAll({
             include:{
                 association: "Usuario",
-                attributes: [ "id", "nome", "nickname" ]
+                attributes: [ "id", "primeiro_nome", "nickname" ]
             },
             order:[
                 ["created_at", "DESC"]

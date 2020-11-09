@@ -69,6 +69,7 @@ module.exports = {
 
     },
 
+    //Buscar usuário pelo id
     async searchById(request, response) {
         const { id } = request.params;
 
@@ -84,7 +85,7 @@ module.exports = {
     },
 
     async update(request, response) {
-        const { nome, data_de_nascimento, senha, email, nickname, conta_premium, sexo_id, estado_id } = request.body;
+        const {primeiro_nome, ultimo_nome, data_de_nascimento, senha, email, nickname, sexo_id, estado_id} = request.body;
         const { id } = request.params;
         let usuario = await Usuario.findByPk(id);
 
@@ -114,11 +115,11 @@ module.exports = {
         //     return response.status(401).send({erro: "Você não tem permissão para alterar"});
         // }
 
-        usuario = await usuario.update({ nome, data_de_nascimento, senha: senhaCripto, email, nickname, conta_premium, sexo_id, estado_id });
+        usuario = await usuario.update({ primeiro_nome, ultimo_nome, data_de_nascimento, senha, email, nickname, sexo_id, estado_id });
 
         response.status(201).send({
             usuario: {
-                nome: usuario.nome,
+                primeiro_nome: usuario.primeiro_nome,
                 data_de_nascimento: usuario.data_de_nascimento,
                 email: usuario.email,
                 nickname: usuario.nickname
