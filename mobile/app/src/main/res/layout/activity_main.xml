@@ -41,6 +41,7 @@
         android:background="@color/colorPrimaryDark"
         android:orientation="vertical"
         android:layout_gravity="center">
+
         <TextView
             android:id="@+id/bemVindo"
             android:layout_width="match_parent"
@@ -51,7 +52,7 @@
             android:textStyle="bold"
             android:textColor="@color/white"
             android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="30dp"
             android:gravity="center_horizontal" />
 
         <Button
@@ -64,15 +65,17 @@
             android:textColor="@color/white"
             android:layout_gravity="center"
             android:textSize="20sp"
-            android:background="@drawable/botao_inicial"
+
+            android:background="@drawable/botao_degrade"
             />
         <Button
             android:id="@+id/cadastreSe"
             android:layout_width="300dp"
             android:layout_height="60dp"
-            android:background="@drawable/botao_inicial"
+            android:background="@drawable/botao_degrade"
             android:textColor="@color/white"
             android:textSize="20sp"
+            android:layout_marginTop="20sp"
             android:layout_marginBottom="20dp"
             android:layout_gravity="center"
             android:text="@string/cadastreSe"
