@@ -32,7 +32,7 @@ class PublicacaoReciclerAdapter  ( var listaPublicacao: ArrayList<Publicacao>) :
             itemView.nameUser.text = publicacao.name
             itemView.date.text = publicacao.date.toString()
 
-            itemView.texto.text = publicacao.texto
+
 
         }
 

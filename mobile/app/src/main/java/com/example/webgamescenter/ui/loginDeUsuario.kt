@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.webgamescenter.R
 import kotlinx.android.synthetic.main.activity_login_de_usuario.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 class loginDeUsuario : AppCompatActivity(), View.OnClickListener {
 
@@ -14,6 +15,13 @@ class loginDeUsuario : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_login_de_usuario)
 
         buttonLogin.setOnClickListener(this)
+        insertToolbar()
+
+    }
+
+    private fun insertToolbar() {
+        setSupportActionBar(toolbar)
+        supportActionBar!!.title = "Login"
 
     }
 
