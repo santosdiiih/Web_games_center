@@ -5,15 +5,16 @@ import com.example.webgamescenter.model.Loja
 class DatasourceLoja {
 
     companion object {
-        fun getLoja() : ArrayList<Loja>{
 
-            var produto = ArrayList<Loja>()
-            produto.add(Loja(1, "Gift Cards"))
-            produto.add(Loja(2, "pokemon"))
-            produto.add(Loja(3,"Lalaland"))
+        fun getCardLoja() : ArrayList <Loja>{
 
-            return produto
+            var cardLoja = ArrayList<Loja> ()
+
+            cardLoja.add(Loja(1, "Gift Card"))
+            cardLoja.add(Loja(2, "Item 2"))
+
+            return cardLoja
         }
-    }
 
+    }
 }

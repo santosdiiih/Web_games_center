@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="230dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     app:cardBackgroundColor="@color/colorPrimaryDark"
@@ -52,72 +52,46 @@
             android:layout_marginLeft="5dp"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="10dp"/>
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="220dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="16dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/nameUser"
-            android:text="Essa é sua publicaçâo sobre o tal do mario bros "
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputText"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
             tools:ignore="MissingConstraints"
             app:layout_constraintLeft_toRightOf="@+id/fotoUsuario"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:gravity="center_horizontal"/>
+            app:layout_constraintTop_toBottomOf="@+id/nameUser"
+            android:background="@drawable/input_quadrado"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="6dp"
+            >
 
+            <TextView
+                android:id="@+id/texto"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Aqui sera a area da publica"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
         <CheckBox
             android:id="@+id/nota"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             app:layout_constraintTop_toBottomOf="@+id/fotoUsuario"
             tools:ignore="MissingConstraints"
             android:text="Like"
-            android:layout_marginLeft="25dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="20dp"
-            android:scaleX="2"
-            android:scaleY="2"
-            android:textColor="@color/white"
             />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            app:layout_constraintTop_toBottomOf="@+id/inputText"
             tools:ignore="MissingConstraints"
-            app:layout_constraintTop_toBottomOf="@id/nota">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                tools:ignore="MissingConstraints"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:textColorHint="@color/white"
-                app:layout_constraintTop_toBottomOf="@id/nota">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Digite seu Comentario"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:gravity="center"
-                    android:layout_marginBottom="20dp"
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout>
-            <Button
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:text="enviar"
-                android:background="@color/colorPrimary"
-                android:textColor="@color/white"
-                android:layout_marginRight="16dp"
-                />
-
-        </LinearLayout>
+            android:layout_marginTop="15dp"
+            android:text="Foto"
+            android:background="@drawable/botao_inicial"
+            android:layout_marginRight="16dp"
+            android:textColor="@color/white"
+            app:layout_constraintRight_toRightOf="parent"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
