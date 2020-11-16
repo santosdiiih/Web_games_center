@@ -4,7 +4,6 @@ import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import './styles.css';
 import logo from '../../assets/logo-type-web.png';
 import { api } from "../../services/api";
-// import { signIn } from "../../services/security";
 import { useHistory } from "react-router-dom";
 import { signIn } from "../../services/security";
 
@@ -42,7 +41,7 @@ const FormLogin = () => {
     }
 
     return (
-        <form onSubmit={entrar}>
+        <Form onSubmit={entrar}>
             <div className="login">
                 <div className="Logo">
                     <img src={logo} alt=""></img>
@@ -71,7 +70,7 @@ const FormLogin = () => {
                     <Button id="input-button">GG!</Button>
                 </div>
             </div>
-        </form>
+        </Form>
     )
 }
 
@@ -176,7 +175,7 @@ const Index = () => {
                                             placeholder="Ex: João@gmail.com"
                                             onChange={handlerInput} />
                                     </FormGroup>
-                                    <Row form>
+                                    <Row Form>
                                         <Col md={6}>
                                             <FormGroup>
                                                 <Label for="Senha" className="text-white">Senha</Label>
@@ -202,7 +201,7 @@ const Index = () => {
                                             </FormGroup>
                                         </Col>
                                     </Row>
-                                    <Row form>
+                                    <Row Form>
                                         <Col md={6}>
                                             <FormGroup>
                                                 <Label for="primeironome" className="text-white">Primeiro Nome</Label>
@@ -228,7 +227,7 @@ const Index = () => {
                                             </FormGroup>
                                         </Col>
                                     </Row>
-                                    <Row form>
+                                    <Row Form>
                                         <Col md={6}>
                                             <FormGroup>
                                                 <Label for="categoria" className="text-white">Selecione sua categoria</Label>
@@ -254,7 +253,7 @@ const Index = () => {
                                             </FormGroup>
                                         </Col>
                                     </Row>
-                                    <Row form>
+                                    <Row Form>
                                         <Col md={6}>
                                             <FormGroup>
                                                 <Label for="sexo" className="text-white">Selecione seu sexo</Label>

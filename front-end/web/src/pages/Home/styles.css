@@ -260,6 +260,7 @@ li{
   margin-right: auto;
   border-radius: 15px 15px 10px 10px;
   background-color: var(--segundario);
+  padding-bottom: 0.5px;
 }
 .top-side-publicao{
   display: grid;
@@ -318,6 +319,7 @@ li{
 .comentarios-build section p {
   margin-top: 5px;
   margin-left: 15px;
+  margin-right: 5px;
 }
 .novo-comentario textarea{
   margin-top: 10px;
@@ -497,4 +499,31 @@ p { margin: 0; }
 .chat-feedback {
 	font-style: italic;	
 	margin: 0 0 0 80px;
+}
+
+.container-publicacao footer h6{
+  cursor: pointer;
+  height: 20px;
+  padding-left: 10px;
+  /* padding-bottom: 10px; */
+  transition: 0.2s;
+  /* background-color: aqua; */
+  /* box-sizing: border-box; */
+}
+
+.container-publicacao footer h6:hover{
+  color: red;
+}
+
+.container-publicacao footer header div,
+.container-publicacao footer header div p
+{
+  margin: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.container-publicacao footer header{
+  display: grid;
+  grid-template-columns: 15% 35% 45% ;
 }

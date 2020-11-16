@@ -27,7 +27,11 @@ module.exports = {
             ]
         });
 
-        response.send(postagens);
+        setTimeout(() => {
+            response.send(postagens);    
+        }, 2000);
+
+        
     },
 
     async delete(request, response){

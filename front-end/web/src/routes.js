@@ -35,18 +35,18 @@ function Router() {
                 <Route exact path="/">
                     <Index />
                 </Route>
-                <Route exact path="/home">
+                <PrivateRoute exact path="/home">
                     <Home />
-                </Route>
-                <Route exact path="/Perfil">
+                </PrivateRoute>
+                <PrivateRoute exact path="/Perfil">
                     <Perfil />
-                </Route>
-                <Route exact path="/Loja">
+                </PrivateRoute>
+                <PrivateRoute exact path="/Loja">
                     <Loja />
-                </Route>
-                <Route exact path="/Jogos">
+                </PrivateRoute>
+                <PrivateRoute exact path="/Jogos">
                     <Jogos />
-                </Route>
+                </PrivateRoute>
 
             </Switch>
         </BrowserRouter>
