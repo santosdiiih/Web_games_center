@@ -8,8 +8,7 @@ class Itens extends Model {
             imagem: DataTypes.STRING,
             descricao: DataTypes.TEXT,
             valor: DataTypes.INTEGER,
-            quantida_de_item: DataTypes.INTEGER,
-            desconto_premium: DataTypes.DOUBLE
+            quantidade_de_item: DataTypes.INTEGER
         },
         {
             sequelize,

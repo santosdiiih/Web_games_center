@@ -14,7 +14,7 @@ module.exports = {
             },
             imagem: {
                 type: Sequelize.STRING,
-                allowNull: false
+                allowNull: true
             },
             descricao:{
                 type: Sequelize.TEXT,
@@ -24,12 +24,8 @@ module.exports = {
                 type: Sequelize.INTEGER,
                 allowNull:false
             },
-            quantida_de_Item: {
+            quantidade_de_item: {
                 type: Sequelize.INTEGER,
-                allowNull: false
-            },
-            desconto_Premium: {
-                type: Sequelize.DOUBLE,
                 allowNull: false
             },
             loja_id: {

@@ -3,26 +3,30 @@ const jwt = require("jsonwebtoken");
 const Itens = require("../models/Itens");
 const Loja = require("../models/Loja");
 
-module.exports ={
+module.exports = {
 
     // Listar todos itens
-    async list(request, response){
+    async list(request, response) {
         const itens = await Itens.findAll();
 
         response.send(itens);
     },
 
     //Criação de ITENS
-    async store(request, response){
+    async store(request, response) {
 
         const { itemId } = request.params;
 
-        const {nome, imagem, descricao, valor, quantida_de_item, desconto_premium} = request.body;
+        const { nome, imagem, descricao, valor, quantidade_de_item } = request.body;
 
         const loja = await Loja.findByPk(itemId);
-        
-        let itens = await loja.createIten(
-            {nome, imagem, descricao, valor, quantida_de_item, desconto_premium});
+
+        if (!loja)
+            return response.status(404).send({ erro: "Loja não encontrada" })
+
+
+        let itens = await loja.createItem(
+            { nome, imagem, descricao, valor, quantidade_de_item });
 
         response.status(201).send({
             itens: {
@@ -30,13 +34,12 @@ module.exports ={
                 imagem: itens.imagem,
                 descricao: itens.descricao,
                 valor: itens.valor,
-                quantida_de_Item: itens.quantida_de_item,
-                descontoPremium: itens.desconto_premium
+                quantidade_de_Item: itens.quantidade_de_Item
             }
         });
     },
 
-    async delete(req, res){
+    async delete(req, res) {
         //pegando o id do item a apagar
         const { idItem } = req.params;
 
@@ -44,8 +47,8 @@ module.exports ={
         let item = await Itens.findByPk(idItem);
 
         //se a item não existir, retorna not found
-        if(!item){
-            return res.status(404).send({ error: "Item não encontrada"})
+        if (!item) {
+            return res.status(404).send({ error: "Item não encontrada" })
         }
 
         // efetua a exclusão do item
@@ -55,12 +58,12 @@ module.exports ={
     },
 
     //editar itens
-    async editar(request,response){
-        const {nome, imagem, descricao, valor, quantida_de_item, desconto_premium} = request.body;
+    async editar(request, response) {
+        const { nome, imagem, descricao, valor, qquantidade_de_Item } = request.body;
         const { idItem } = request.params;
         let itens = await Itens.findByPk(idItem);
-        
-        await itens.update({nome, imagem, descricao, valor, quantida_de_item, desconto_premium});
+
+        await itens.update({ nome, imagem, descricao, valor, quantidade_de_Item });
 
         response.status(201).send({
             itens: {
@@ -68,8 +71,7 @@ module.exports ={
                 imagem: itens.imagem,
                 descricao: itens.descricao,
                 valor: itens.valor,
-                quantida_de_Item: itens.quantida_de_item,
-                descontoPremium: itens.desconto_premium
+                quantidade_de_Item: itens.quantidade_de_Item,
             }
         });
     }

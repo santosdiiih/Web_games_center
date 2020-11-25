@@ -33,6 +33,12 @@ routes.get("/estados", estadoController.list);
 routes.get("/sexo", sexoController.index);
 routes.get("/genero", generoController.list);
 
+// Rota de itens
+routes.post("/loja/:itemId/item", Multer.single("imagem"), itemController.store);
+routes.get("/loja/:itemId/item", itemController.list);
+routes.delete("/loja/:itemId/item/:idItem", itemController.delete);
+routes.put("/loja/:itemId/item/:idItem", itemController.editar);
+
 
 
 // ***** Rotas Privadas ***** //
@@ -61,12 +67,12 @@ routes.post("/plataforma", plataformaController.store);
 routes.get("/plataforma", plataformaController.list);
 
 // Rotas de postagens
-routes.post("/postagens",Multer.single("imagem_video"), uploadImagem, postagemController.store);
-routes.get("/postagens",postagemController.index);
-routes.delete("/postagens/:id",postagemController.delete);
+routes.post("/postagens", Multer.single("imagem_video"), uploadImagem, postagemController.store);
+routes.get("/postagens", postagemController.index);
+routes.delete("/postagens/:id", postagemController.delete);
 
 // Rotas de comentarios
-routes.post("/postagens/:postId/comentario",comentarioController.store);
+routes.post("/postagens/:postId/comentario", comentarioController.store);
 routes.get("/postagens/:postId/comentario", comentarioController.list);
 routes.delete("/postagens/:postId/comentario/:idComentario", comentarioController.delete);
 
@@ -74,10 +80,6 @@ routes.delete("/postagens/:postId/comentario/:idComentario", comentarioControlle
 routes.post("/loja", lojaController.store);
 routes.get("/loja", lojaController.list);
 
-// Rota de itens
-routes.post("/loja/:itemId/item", itemController.store);
-routes.get("/loja/:itemId/item", itemController.list);
-routes.delete("/loja/:itemId/item/:idItem", itemController.delete);
-routes.put("/loja/:itemId/item/:idItem", itemController.editar);
+
 
 module.exports = routes;
