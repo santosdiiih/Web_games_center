@@ -152,7 +152,6 @@ li{
   height: 35px;
   border-radius: 15px;
 }
-
 .nav-itens{
   margin-top: 10px;
   display: grid;
@@ -197,9 +196,7 @@ li{
 }
 .container-pergunta{
   width: 500px;
-  min-height: 280px;
-  height: auto;
-  overflow-x: hidden;
+  height: 260px;
   margin-right: auto;
   border-radius: 15px 15px 10px 10px;
   background-color: var(--segundario);
@@ -208,15 +205,6 @@ li{
   margin-top: 5px;
   display: grid;
   grid-template-columns: 20% 70%;
-}
-.container-imagem{
-  width: 220px;
-  height: 100px;
-  margin-left: 130px;
-}
-.Imagem-Container{
- width: 200px;
- height: 120px;
 }
 .FotoPublicao{
   margin-top: 10px;
@@ -299,7 +287,7 @@ li{
 }
 .top-side-publicao{
   display: grid;
-  grid-template-columns: 12% 23% 52% 1%;
+  grid-template-columns: 15% 35% 35% 10%;
 }
 .foto-perfil-publicacao{
   width: 50px;
@@ -323,10 +311,24 @@ li{
   margin-left: auto;
   color: var(--white);
 }
+
+.container-publicacao-titulo{
+  /* background-color: aqua; */
+  padding: 15px 0px 0px 15px;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+
 .container-publicacao-texto{
-  padding: 15px;
+  padding: 0px 0px 0px 15px ;
   box-sizing: border-box;
 }
+
+.text-titulo{
+  color: var(--white);
+  font-size: 20px;
+}
+
 .text-area{
   color: var(--white);
   width: 100%;
