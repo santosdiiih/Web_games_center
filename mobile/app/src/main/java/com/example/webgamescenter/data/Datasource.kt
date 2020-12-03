@@ -2,7 +2,7 @@ package com.example.webgamescenter.data
 
 import com.example.webgamescenter.model.Publicacao
 
-class DatasourcePublicacao {
+class Datasource {
 
     companion object{
 

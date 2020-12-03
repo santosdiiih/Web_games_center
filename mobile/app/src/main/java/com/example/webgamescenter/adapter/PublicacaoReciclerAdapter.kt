@@ -30,9 +30,9 @@ class PublicacaoReciclerAdapter  ( var listaPublicacao: ArrayList<Publicacao>) :
         fun bind(publicacao: Publicacao){
 
             itemView.nameUser.text = publicacao.name
-            itemView.date.text = publicacao.date.toString()
 
-            itemView.texto.text = publicacao.texto
+
+
 
         }
 

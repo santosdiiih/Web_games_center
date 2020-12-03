@@ -1,11 +1,7 @@
 package com.example.webgamescenter.model
 
-import android.graphics.Bitmap
-
-class Loja (
-    //var image: Bitmap
+data class Loja (
     var code: Int,
-    var titulo: String
+    var name: String
 
 )
-
