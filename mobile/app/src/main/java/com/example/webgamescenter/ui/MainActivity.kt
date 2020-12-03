@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             startActivity(intent)
         }
         if(v.id == R.id.entrar){
-            val intent = Intent(this, loja::class.java)
+            val intent = Intent(this, loginDeUsuario::class.java)
             intent.putExtra("operacao", Constants.OPERACAO_LOGIN)
 
             startActivity(intent)
