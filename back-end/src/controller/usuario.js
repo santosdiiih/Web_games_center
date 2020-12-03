@@ -89,25 +89,25 @@ module.exports = {
         const { id } = request.params;
         let usuario = await Usuario.findByPk(id);
 
-        if (usuario.email != email || usuario.nickname != nickname) {
-            // Verificar se o usuario já existe
-            usuario = await Usuario.findOne({
+        // if (usuario.email != email || usuario.nickname != nickname) {
+        //     // Verificar se o usuario já existe
+        //     usuario = await Usuario.findOne({
 
-                where: {
-                    [Op.or]: [
-                        { email: email },
-                        { nickname: nickname }
-                    ]
-                }
+        //         where: {
+        //             [Op.or]: [
+        //                 { email: email },
+        //                 { nickname: nickname }
+        //             ]
+        //         }
 
 
-            });
+        //     });
 
-            if (usuario.email != email || usuario.nickname != nickname) {
-                return response.status(400).send({ erro: "Nickname ou email já está sendo utilizado" })
-            }
+        //     if (usuario.email != email && usuario.nickname != nickname) {
+        //         return response.status(400).send({ erro: "Nickname ou email já está sendo utilizado" })
+        //     }
 
-        }
+        // }
 
         const senhaCripto = await bcrypt.hash(senha, 10);
 
@@ -115,7 +115,7 @@ module.exports = {
         //     return response.status(401).send({erro: "Você não tem permissão para alterar"});
         // }
 
-        usuario = await usuario.update({ primeiro_nome, ultimo_nome, data_de_nascimento, senha, email, nickname, sexo_id, estado_id });
+        usuario = await usuario.update({ primeiro_nome, ultimo_nome, data_de_nascimento, senha: senhaCripto, email, nickname, sexo_id, estado_id });
 
         response.status(201).send({
             usuario: {

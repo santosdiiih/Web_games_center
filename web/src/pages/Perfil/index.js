@@ -20,30 +20,34 @@ function Perfil() {
         primeiro_nome: usuarioSessao.primeiro_nome,
         ultimo_nome: usuarioSessao.ultimo_nome,
         senha: "",
+        data_de_nascimento: usuarioSessao.data_de_nascimento,
         email: usuarioSessao.email,
         nickname: usuarioSessao.nickname,
         sexo_id: usuarioSessao.sexo_id,
         estado_id: usuarioSessao.estado_id,
     });
 
+
+
     const [sexos, setSexos] = useState([]);
     const [estados, setEstados] = useState([]);
-    
+
     const atualizacao = (e) => {
         e.preventDefault();
 
-        if(dadosUsuario.senha === "" ){
+        if (dadosUsuario.senha === "") {
             window.alert("Senha Vazia");
         } else {
             try {
+                // console.log(dadosUsuario);
                 // console.log(usuarioSessao.id)
                 api.put(`/usuarios/${usuarioSessao.id}`, dadosUsuario);
                 // if(retorno.status === 201){
-                //     return history.push("/home");
+                return history.push("/home");
                 // }
 
             } catch (error) {
-                
+
             }
         }
     }
@@ -70,6 +74,7 @@ function Perfil() {
         listarSexos();
     }, [])
 
+
     useEffect(() => {
         const listarEstados = async () => {
             try {
@@ -84,6 +89,7 @@ function Perfil() {
     }, [])
 
 
+   
 
     return <>
         <div className="page-wraper">
@@ -167,12 +173,15 @@ function Perfil() {
                                                 </Col>
                                                 <Col md={6}>
                                                     <FormGroup>
-                                                        <Label for="nickname" className="text-white">Ano De Nascimento</Label>
+                                                        <Label for="nickname" className="text-white">Ano De Nascimento</Label>                                                       
+
                                                         <Input
                                                             type="text"
-                                                            name="nickname"
-                                                            id="nickname"
-                                                            placeholder="Ano de Nascimento" />
+                                                            name="data_de_nascimento"
+                                                            id="data_de_nascimento"
+                                                            placeholder="Ano de Nascimento"
+                                                            value={dadosUsuario.data_de_nascimento}
+                                                            onChange={handlerInput} />
                                                     </FormGroup>
                                                 </Col>
                                                 <Col md={6}>
@@ -180,9 +189,9 @@ function Perfil() {
                                                         <Label for="E-mail" className="text-white">E-Mail</Label>
                                                         <Input
                                                             type="email"
-                                                            name="E-mail"
+                                                            name="email"
                                                             id="email"
-                                                            placeholder="Seu nome"
+                                                            placeholder="Seu email"
                                                             value={dadosUsuario.email}
                                                             onChange={handlerInput} />
                                                     </FormGroup>
@@ -195,7 +204,7 @@ function Perfil() {
                                                             type="select"
                                                             name="sexo"
                                                             id="sexo_id">
-                                                            <option value={dadosUsuario.sexo_id}></option>
+                                                            <option value={dadosUsuario.sexo_id}>{dadosUsuario.sexo_id}</option>
                                                             {sexos.map(o => (
                                                                 <option value={o.id}>{o.nome}</option>
                                                             ))}
@@ -210,7 +219,7 @@ function Perfil() {
                                                             type="select"
                                                             name="categoria"
                                                             id="estado_id">
-                                                            <option value={dadosUsuario.estado_id}>Selecione seu estado</option>
+                                                            <option value={dadosUsuario.estado_id}>{dadosUsuario.estado_id}</option>
                                                             {estados.map(o => (
                                                                 <option value={o.id}>{o.nome}</option>
                                                             ))}

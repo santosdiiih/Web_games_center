@@ -17,7 +17,7 @@ module.exports = {
                 allowNull: false
             },
             data_de_nascimento: {
-                type: Sequelize.DATE,
+                type: Sequelize.STRING,
                 // allowNull: false
             },
             senha: {
