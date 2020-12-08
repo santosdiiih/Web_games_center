@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.webgamescenter.Classes.Estado
-import com.example.webgamescenter.Classes.Usuario
+import com.example.webgamescenter.model.Estado
+import com.example.webgamescenter.model.Usuario
 import com.example.webgamescenter.R
 import com.example.webgamescenter.http.HttpHelperEstado
 import com.example.webgamescenter.http.HttpHelperUsuario
@@ -56,16 +56,16 @@ class cadastroDeUsuario : AppCompatActivity(), View.OnClickListener  {
 
         // criando um objeto usuario
         var usuario = Usuario()
-        usuario.nome = cadastroNome.text.toString()
+        usuario.primeiro_nome = cadastroNome.text.toString()
         usuario.senha = cadastroSenha.text.toString()
-        usuario.dataDeNascimento = cadastroDataNascimento.text.toString()
-        usuario.ultimoNome = cadastroUltimoNome.text.toString()
+        usuario.data_de_nascimento = cadastroDataNascimento.text.toString()
+        usuario.ultimo_nome = cadastroUltimoNome.text.toString()
         usuario.email = cadastroEmail.text.toString()
         usuario.nickname = cadastroNickname.text.toString()
 
         // pega a posição do estado que foi selecionado
-        val position = adapter.getPosition(usuario.estado)
-        cadastroSpinnerEstado.setSelection(position)
+        //val position = adapter.getPosition(usuario.EstadoId)
+       // cadastroSpinnerEstado.setSelection(position)
 
         // instancia a clase estado
         var estado = Estado()

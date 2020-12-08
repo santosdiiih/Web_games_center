@@ -1,4 +1,4 @@
-package com.example.webgamescenter.Classes
+package com.example.webgamescenter.model
 
 class Estado {
     var codigo = ""

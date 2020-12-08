@@ -1,7 +1,6 @@
 package com.example.webgamescenter.http
 
-import com.example.webgamescenter.Classes.RespostaUsuario
-import com.example.webgamescenter.Classes.Usuario
+import com.example.webgamescenter.model.Usuario
 import com.google.gson.Gson
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
@@ -17,35 +16,25 @@ class HttpHelperLogin {
     // criando um cliente http
     val usuario = OkHttpClient()
 
-    fun login(json: String) : RespostaUsuario {
+    fun login(json: String) : String {
 
-        // definindo o cabeçalho
+        // definindo o cabeçalho da requisição
         val headerHttp = MediaType.parse("application/json; charset=utf-8")
 
-        // criando o body da requisição
+        // criando o bodu=y da requisiçao
         val body = RequestBody.create(headerHttp, json)
 
-        // construir a requisição http para o servidor
+        // construindo a requisição ao servidor
         var request = Request.Builder().url(URL).post(body).build()
 
-        // utiliza o client para fazer a requisição e recebr a resposta
-        var response = usuario.newCall(request).execute()
+        val response = usuario.newCall(request).execute()
 
-        val responseBody = response.body()
+        println("############# aqui é o post do login  " + response.body()!!.string())
 
-        // instanciando a clase usuario
-        var usuario = RespostaUsuario()
-
-        if(responseBody!!.contentLength().toInt() != 0){
-            var json = responseBody.string()
-
-            var gson = Gson()
-            usuario = gson.fromJson(json, RespostaUsuario::class.java)
-        }
-
-        println(usuario.usuario.dataDeNascimento)
-
-        return usuario
+        return response.body()!!.string()
 
     }
+
+
+
 }

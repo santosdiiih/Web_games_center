@@ -1,7 +1,5 @@
 package com.example.webgamescenter.http
 
-import com.example.webgamescenter.Classes.Estado
-import com.google.gson.Gson
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
