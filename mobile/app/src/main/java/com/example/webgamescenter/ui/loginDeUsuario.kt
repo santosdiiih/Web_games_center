@@ -4,9 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.webgamescenter.model.Usuario
 import com.example.webgamescenter.R
 import com.example.webgamescenter.http.HttpHelperLogin
-import com.example.webgamescenter.http.HttpHelperUsuario
 import com.example.webgamescenter.model.Login
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_login_de_usuario.*
@@ -48,13 +48,11 @@ class loginDeUsuario : AppCompatActivity(), View.OnClickListener {
         }
         return valida
     }
-
     private fun insertToolbar() {
         setSupportActionBar(toolbar)
         supportActionBar!!.title = "Login"
 
     }
-
     override fun onClick(v: View) {
         if(v.id == R.id.buttonLogin){
             if(validaForm()){
@@ -74,21 +72,20 @@ class loginDeUsuario : AppCompatActivity(), View.OnClickListener {
         // convertendo o objeto usuario em um gson
         var loginJson = gson.toJson(login)
 
-        println(loginJson)
-
         doAsync {
             val http = HttpHelperLogin()
             http.login(loginJson)
 
-            uiThread {
-                println("-------" + login)
-                if(!(login.email.isEmpty())){
+            /* uiThread {
+                // println("-------" + login)
+                if(!(Usuario().email.isEmpty())){
                    //abrirActivity()
+                    toast("Deveria logar "  + Usuario().email)
                 }
                 else {
                     toast("Senha ou email Incorretos, Tente novamente")
                 }
-            }
+            } */
         }
     }
 

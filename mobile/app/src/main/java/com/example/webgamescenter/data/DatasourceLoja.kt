@@ -8,9 +8,6 @@ class DatasourceLoja {
         fun getLoja() : ArrayList<Loja>{
 
             var produto = ArrayList<Loja>()
-            produto.add(Loja(1, "Gift Cards"))
-            produto.add(Loja(2, "pokemon"))
-            produto.add(Loja(3,"Lalaland"))
 
             return produto
         }

@@ -1,10 +1,10 @@
 package com.example.webgamescenter.model
 
-class Publicacao(
-    //var imagem: String,
-    var code: Int,
-    var name: String,
-    var date: Int,
-    var texto: String,
-    var rate: Double
-)
+class Publicacao{
+    var titulo = ""
+    var publicacao = ""
+
+    override fun toString(): String {
+        return "Publicacao(titulo='$titulo', publicacao='$publicacao')"
+    }
+}

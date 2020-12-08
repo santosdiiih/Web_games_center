@@ -29,7 +29,7 @@ class PublicacaoReciclerAdapter  ( var listaPublicacao: ArrayList<Publicacao>) :
     class PublicacaoViewHolder (itemView: View) : RecyclerView.ViewHolder (itemView) {
         fun bind(publicacao: Publicacao){
 
-            itemView.nameUser.text = publicacao.name
+
 
 
 
