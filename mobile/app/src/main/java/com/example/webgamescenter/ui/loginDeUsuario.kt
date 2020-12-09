@@ -1,10 +1,11 @@
 package com.example.webgamescenter.ui
 
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
-import com.example.webgamescenter.model.Usuario
+import androidx.appcompat.app.AppCompatActivity
 import com.example.webgamescenter.R
 import com.example.webgamescenter.http.HttpHelperLogin
 import com.example.webgamescenter.model.Login
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.toolbar.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
+
 
 class loginDeUsuario : AppCompatActivity(), View.OnClickListener {
 
@@ -74,18 +76,20 @@ class loginDeUsuario : AppCompatActivity(), View.OnClickListener {
 
         doAsync {
             val http = HttpHelperLogin()
-            http.login(loginJson)
+            val retorno = http.login(loginJson);
 
-            /* uiThread {
+             uiThread {
                 // println("-------" + login)
-                if(!(Usuario().email.isEmpty())){
-                   //abrirActivity()
-                    toast("Deveria logar "  + Usuario().email)
+                if(!(retorno.usuario.email.isEmpty())){
+                    val preferences: SharedPreferences = getSharedPreferences("MY APP", Context.MODE_PRIVATE);
+                    preferences.edit().putString("token", retorno.token).apply();
+                   abrirActivity()
+//                    toast("Deveria logar "  + Usuario().email)
                 }
                 else {
                     toast("Senha ou email Incorretos, Tente novamente")
                 }
-            } */
+            }
         }
     }
 

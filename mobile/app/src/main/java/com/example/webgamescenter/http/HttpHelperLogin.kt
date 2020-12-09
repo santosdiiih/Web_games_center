@@ -1,5 +1,6 @@
 package com.example.webgamescenter.http
 
+import com.example.webgamescenter.model.RespostaUsuario
 import com.example.webgamescenter.model.Usuario
 import com.google.gson.Gson
 import okhttp3.MediaType
@@ -11,12 +12,12 @@ import okhttp3.RequestBody
 class HttpHelperLogin {
 
     // determina a url a ser solicitada
-    val URL = "http://192.168.100.106:3333/sessao"
+    val URL = "http://10.107.131.17:3333/sessao"
 
     // criando um cliente http
     val usuario = OkHttpClient()
 
-    fun login(json: String) : String {
+    fun login(json: String) : RespostaUsuario {
 
         // definindo o cabeçalho da requisição
         val headerHttp = MediaType.parse("application/json; charset=utf-8")
@@ -29,9 +30,13 @@ class HttpHelperLogin {
 
         val response = usuario.newCall(request).execute()
 
-        println("############# aqui é o post do login  " + response.body()!!.string())
+//        println("############# aqui é o post do login  " + response.body()!!.string())
 
-        return response.body()!!.string()
+        val gson = Gson()
+
+        val respostaUsuario = gson.fromJson(response.body()!!.string(), RespostaUsuario::class.java)
+
+        return respostaUsuario
 
     }
 

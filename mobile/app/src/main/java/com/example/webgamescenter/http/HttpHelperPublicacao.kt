@@ -6,7 +6,7 @@ import okhttp3.Request
 class HttpHelperPublicacao {
 
     // definir a URL do servidor
-    val URL = "http://192.168.100.106:3333/postagens"
+    val URL = "http://10.107.131.17:3333/postagens"
 
     // criando um cliente que dispara a requisição
     val client = OkHttpClient()
@@ -16,7 +16,7 @@ class HttpHelperPublicacao {
         // criando uma requisição GET
         val request = Request.Builder()
             .url(URL)
-            .addHeader("Authorization", "bearer :eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjMsImlhdCI6MTYwNjMxMDU3Mn0.xfZsjHOPh69NQb_9ghUD2DsOqWQd_MczY8l1asTAsSM")
+            .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjMsImlhdCI6MTYwNjMxMDU3Mn0.xfZsjHOPh69NQb_9ghUD2DsOqWQd_MczY8l1asTAsSM")
             .get().build()
 
         // enviar a requisição para o servidor
