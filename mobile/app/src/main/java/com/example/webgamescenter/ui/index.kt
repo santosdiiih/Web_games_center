@@ -15,6 +15,7 @@ import com.example.webgamescenter.http.HttpHelperUsuario
 import kotlinx.android.synthetic.main.activity_index.*
 import kotlinx.android.synthetic.main.toolbar.*
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 
 class index : AppCompatActivity(), View.OnClickListener {
 
@@ -24,15 +25,22 @@ class index : AppCompatActivity(), View.OnClickListener {
 
         insertToolbar()
         novoPost.setOnClickListener(this)
-         val recyclerView = recyclerViewPublicacao
-         recyclerView.layoutManager = LinearLayoutManager(applicationContext)
-         recyclerView.adapter = PublicacaoReciclerAdapter(Datasource.getCardPublicacao())
+
+
+        val token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjMsImlhdCI6MTYwNjMxMDU3Mn0.xfZsjHOPh69NQb_9ghUD2DsOqWQd_MczY8l1asTAsSM"
 
         // resgata as informaçoes gravadas no banco
          doAsync {
             val http = HttpHelperPublicacao()
-            http.getPublicacao()
+            val res = http.getPublicacao(token)
+
+             // println("%%%%%%%%%%% index " + res)
+
+             uiThread {
+                // if()
+             }
          }
+
     }
 
 
