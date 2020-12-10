@@ -14,8 +14,7 @@ const Item = require("../models/Itens");
 const Identificacao = require("../models/Identificacao");
 
 // Criamo a conexão com os dados da configuração
-// const conexao = new Sequelize(dbConfig);
-const conexao = new Sequelize(dbConfig.url, dbConfig.config); 
+const conexao = new Sequelize(dbConfig);
 
 // Inicializando as models
 Estado.init(conexao);
