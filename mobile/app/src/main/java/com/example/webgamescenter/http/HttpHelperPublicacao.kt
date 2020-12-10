@@ -1,17 +1,18 @@
 package com.example.webgamescenter.http
 
+import com.example.webgamescenter.model.RespostaPublicacao
 import okhttp3.OkHttpClient
 import okhttp3.Request
 
 class HttpHelperPublicacao {
 
     // definir a URL do servidor
-    val URL = "http://10.107.131.17:3333/postagens"
+    val URL = "http://192.168.100.106:3333/postagens"
 
     // criando um cliente que dispara a requisição
     val client = OkHttpClient()
 
-    fun getPublicacao(){
+    fun getPublicacao(token: String) : String? {
 
         // criando uma requisição GET
         val request = Request.Builder()
@@ -26,10 +27,11 @@ class HttpHelperPublicacao {
         val responseBody = response.body()
 
         // exibir o body da requisição
-        if(responseBody != null ){
-            val json = responseBody.string()
+        //if(responseBody != null ){
+            val json = responseBody!!.string()
             println("RESPOSTA ========> " + json)
-        }
+       // }
+        return json
     }
 
 }
