@@ -17,7 +17,7 @@ class HttpHelperPublicacao {
         // criando uma requisição GET
         val request = Request.Builder()
             .url(URL)
-            .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjMsImlhdCI6MTYwNjMxMDU3Mn0.xfZsjHOPh69NQb_9ghUD2DsOqWQd_MczY8l1asTAsSM")
+            .addHeader("Authorization", "Bearer ${token}")
             .get().build()
 
         // enviar a requisição para o servidor
