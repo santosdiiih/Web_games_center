@@ -4,24 +4,33 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter.*
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatSpinner
 import com.example.webgamescenter.model.Estado
 import com.example.webgamescenter.model.Usuario
 import com.example.webgamescenter.R
 import com.example.webgamescenter.http.HttpHelperEstado
+import com.example.webgamescenter.http.HttpHelperLogin
 import com.example.webgamescenter.http.HttpHelperUsuario
+import com.example.webgamescenter.model.NovoUsuario
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_cadastro_de_usuario.*
 import kotlinx.android.synthetic.main.toolbar.*
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
 import android.widget.ArrayAdapter as ArrayAdapter
 
-class cadastroDeUsuario : AppCompatActivity(), View.OnClickListener  {
+class cadastroDeUsuario : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemSelectedListener  {
 
-    private lateinit var adapter: ArrayAdapter<CharSequence>
-    private lateinit var arrayAdapter: ArrayAdapter<CharSequence>
+
+    private lateinit var sppinerEstado: AppCompatSpinner
+    private var estadoList = listOf<Estado>()
+    private var sppinerAdapter: ArrayAdapter<Estado>? = null
+    private lateinit var selectdEstado: Estado
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,62 +40,66 @@ class cadastroDeUsuario : AppCompatActivity(), View.OnClickListener  {
         buttonAbrirGaleria.setOnClickListener(this)
         buttonCadastro.setOnClickListener(this)
 
+        // instanciar o sppiner
+        sppinerEstado = findViewById(R.id.cadastroSpinnerEstado)
 
-       // adapter = ArrayAdapter.createFromResource(this, estado, android.R.layout.simple_spinner_dropdown_item)
-        cadastroSpinnerEstado.adapter = adapter
+        preencherSpinnerEstado()
+
+        sppinerEstado.onItemSelectedListener = this
 
     }
 
 
-    private fun preencherSpinnerEstado(view: View) {
+    private fun preencherSpinnerEstado() {
 
-            doAsync {
-                val http = HttpHelperEstado()
-                http.getEstados()
-                var spinnerAdapter = ""
-                uiThread {
-                   // spinnerAdapter = ArrayAdapter.createFromResource(view.context, android.R.layout.simple_spinner_dropdown_item)
-                    //    .toString()
-                   // cadastroSpinnerEstado.adapter = spinnerAdapter
-                }
+        doAsync {
+
+            estadoList = HttpHelperEstado().getEstados()
+
+            uiThread {
+                sppinerAdapter = ArrayAdapter(applicationContext, android.R.layout.simple_expandable_list_item_1, estadoList)
+                sppinerEstado.adapter = sppinerAdapter
             }
+        }
 
     }
     private fun objetoUsuario() {
 
         // criando um objeto usuario
-        var usuario = Usuario()
+        var usuario = NovoUsuario()
         usuario.primeiro_nome = cadastroNome.text.toString()
-        usuario.senha = cadastroSenha.text.toString()
-        usuario.data_de_nascimento = cadastroDataNascimento.text.toString()
         usuario.ultimo_nome = cadastroUltimoNome.text.toString()
+        usuario.data_de_nascimento = cadastroDataNascimento.text.toString()
+        usuario.senha = cadastroSenha.text.toString()
         usuario.email = cadastroEmail.text.toString()
         usuario.nickname = cadastroNickname.text.toString()
+        usuario.sexo_id = "1"
+        usuario.estado_id =  selectdEstado.id.toString()
 
-        // pega a posição do estado que foi selecionado
-        //val position = adapter.getPosition(usuario.EstadoId)
-       // cadastroSpinnerEstado.setSelection(position)
 
-        // instancia a clase estado
-        var estado = Estado()
-
-        // var responseBody = HttpHelper.getEstados()
-        // val objectList = gson.fromJson(responseBody, Estado::class.java).asList()
-
-        // resgata o codigo do estado que foi selecionado
-        estado.codigo = cadastroSpinnerEstado.selectedItem.toString()
-
-        //instanciar um objeto gson
         var gson = Gson()
 
         // convertendo o objeto usuario em um gson
         var usuarioJson = gson.toJson(usuario)
 
+        println("########## usuarioJson" + usuarioJson)
+
         doAsync {
             val http = HttpHelperUsuario()
-            http.post(usuarioJson)
-        }
+            val retorno = http.post(usuarioJson)
 
+            uiThread {
+               if(!(retorno.token.isEmpty())){
+                   val intent = Intent(applicationContext, loginDeUsuario::class.java)
+                   toast("Usuario Criado com Sucesso!!")
+                   startActivity(intent)
+                   limpaForm()
+               }
+                else{
+                   toast("Usuario ja cadastro")
+               }
+            }
+        }
 
     }
 
@@ -109,9 +122,6 @@ class cadastroDeUsuario : AppCompatActivity(), View.OnClickListener  {
 
                     objetoUsuario()
 
-                    val intent = Intent(this, loginDeUsuario::class.java)
-                    startActivity(intent)
-                    limpaForm()
                 }
             }
         }
@@ -200,5 +210,14 @@ class cadastroDeUsuario : AppCompatActivity(), View.OnClickListener  {
             fotoPerfilUsuario.scaleType = ImageView.ScaleType.CENTER_CROP
             fotoPerfilUsuario.setImageBitmap(bitmap)
         }
+    }
+
+    override fun onNothingSelected(p0: AdapterView<*>?) {
+        //     QUANDO NADA FOR SELECIONADO AQUI REALIZA UMA AÇAO
+    }
+
+    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        selectdEstado = sppinerEstado.selectedItem as Estado
+
     }
 }

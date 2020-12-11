@@ -1,13 +1,16 @@
 package com.example.webgamescenter.model
 
-class Estado {
-    var codigo = ""
-    var nome = ""
-    var sigla = ""
+data class Estado (
+    val id:  Long,
+    val nome: String = "",
+    val sigla:String = ""
 
+)
+{
     override fun toString(): String {
-        return "Estado(codigo='$codigo', nome='$nome', sigla='$sigla')"
+        return "$sigla - $nome"
     }
-
-
 }
+
+
+
