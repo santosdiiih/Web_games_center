@@ -11,12 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.webgamescenter.R
 import com.example.webgamescenter.adapter.LojaReciclerViewAdapter
 import com.example.webgamescenter.data.DatasourceLoja
-import kotlinx.android.synthetic.main.activity_index.*
 import kotlinx.android.synthetic.main.activity_loja.*
-import kotlinx.android.synthetic.main.poup_up_loja.*
-import kotlinx.android.synthetic.main.poup_up_loja.view.*
 import kotlinx.android.synthetic.main.toolbar.*
-import org.w3c.dom.Text
 
 class loja : AppCompatActivity(), View.OnClickListener {
 

@@ -1,26 +1,18 @@
 package com.example.webgamescenter.model
 
-class Publicacao{
+class Publicacao(
+    var id: Int = 0,
+    var titulo: String ,
+    var descricao: String ,
+    var imagem_video: String = "",
+    var hashtag: String = "",
+    var createdAt:String = "",
+    var updatedAt: String = "",
+    var usuario_id: Int = 1
 
-    var id = 0
-    var titulo = ""
-    var descricao = ""
-    var imagem_video = ""
-    var hashtag = ""
-    var createdAt = ""
-    var updatedAt =  ""
-    var usuario_id = 1
-    var UsuarioId = 1
-
-    var Usuario = {
-        var id = 0
-        var primeiro_nome = ""
-        var nickname = ""
-    }
-
+){
     override fun toString(): String {
-        return "Publicacao(id=$id, titulo='$titulo', descricao='$descricao', imagem_video='$imagem_video', hashtag='$hashtag', createdAt='$createdAt', updatedAt='$updatedAt', usuario_id=$usuario_id, UsuarioId=$UsuarioId, Usuario=$Usuario)"
+        return "Publicacao(id=$id, titulo='$titulo', descricao='$descricao', imagem_video='$imagem_video', hashtag='$hashtag', createdAt='$createdAt', updatedAt='$updatedAt', usuario_id=$usuario_id)"
     }
-
 
 }

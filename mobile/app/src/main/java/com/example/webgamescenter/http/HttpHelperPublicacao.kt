@@ -1,18 +1,25 @@
 package com.example.webgamescenter.http
 
+import android.util.Log
+import com.example.webgamescenter.model.Estado
+import com.example.webgamescenter.model.Publicacao
+import com.example.webgamescenter.model.RespostaNovoUsuario
 import com.example.webgamescenter.model.RespostaPublicacao
+import com.google.gson.Gson
+import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.RequestBody
 
 class HttpHelperPublicacao {
 
-    // definir a URL do servidor
-    val URL = "http://192.168.100.106:3333/postagens"
+    fun getPublicacao(token: String): List<Publicacao> {
 
-    // criando um cliente que dispara a requisição
-    val client = OkHttpClient()
+        // definir a URL do servidor
+        val URL = "http://192.168.100.106:3333/postagens"
 
-    fun getPublicacao(token: String) : String? {
+        // criando um cliente que dispara a requisição
+        val client = OkHttpClient()
 
         // criando uma requisição GET
         val request = Request.Builder()
@@ -26,12 +33,14 @@ class HttpHelperPublicacao {
         //extraindo o body da requisicao
         val responseBody = response.body()
 
-        // exibir o body da requisição
-        //if(responseBody != null ){
-            val json = responseBody!!.string()
-            println("RESPOSTA ========> " + json)
-       // }
-        return json
+        var json = responseBody!!.string()
+
+
+       val publicacao = Gson().fromJson(json, Array<Publicacao>::class.java).toList()
+
+        println("####### HTTP PUB  " + publicacao)
+
+        return publicacao
     }
 
 }
