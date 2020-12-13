@@ -83,7 +83,7 @@ class loginDeUsuario : AppCompatActivity(), View.OnClickListener {
                 if(!(retorno.usuario.email.isEmpty())){
                     val preferences: SharedPreferences = getSharedPreferences("MY APP", Context.MODE_PRIVATE);
                     preferences.edit().putString("token", retorno.token).apply();
-                   abrirActivity()
+                    abrirActivity()
 //                    toast("Deveria logar "  + Usuario().email)
                 }
                 else {

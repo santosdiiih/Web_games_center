@@ -36,7 +36,7 @@ class HttpHelperUsuario {
 
         val gson = Gson()
 
-        val respostaUsuario = gson.fromJson(response.body()!!.string(), RespostaNovoUsuario::class.java)
+        var respostaUsuario = gson.fromJson(response.body()!!.string(), RespostaNovoUsuario::class.java)
 
         println("############# aqui é o post de novo usuario  " + respostaUsuario)
 

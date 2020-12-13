@@ -14,7 +14,7 @@ class Usuario {
     var createdAt = ""
     var updatedAt =  ""
     var SexoId = 0
-    //var EstadoId = ""
+
 
     override fun toString(): String {
         return "Usuario(id=$id, primeiro_nome='$primeiro_nome', ultimo_nome='$ultimo_nome', data_de_nascimento='$data_de_nascimento', senha='$senha', email='$email', nickname='$nickname', sexo_id=$sexo_id, estado_id=$estado_id, createdAt='$createdAt', updatedAt='$updatedAt', SexoId=$SexoId)"
