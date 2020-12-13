@@ -1,18 +1,19 @@
 package com.example.webgamescenter.http
 
-import com.example.webgamescenter.model.RespostaPublicacao
+import com.example.webgamescenter.model.Publicacao
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import org.json.JSONArray
 
 class HttpHelperPublicacao {
 
-    // definir a URL do servidor
-    val URL = "http://192.168.100.106:3333/postagens"
+    fun getPublicacao(token: String): List<Publicacao> {
 
-    // criando um cliente que dispara a requisição
-    val client = OkHttpClient()
+        // definir a URL do servidor
+        val URL = "http://192.168.100.106:3333/postagens"
 
-    fun getPublicacao(token: String) : String? {
+        // criando um cliente que dispara a requisição
+        val client = OkHttpClient()
 
         // criando uma requisição GET
         val request = Request.Builder()
@@ -26,12 +27,25 @@ class HttpHelperPublicacao {
         //extraindo o body da requisicao
         val responseBody = response.body()
 
-        // exibir o body da requisição
-        //if(responseBody != null ){
-            val json = responseBody!!.string()
-            println("RESPOSTA ========> " + json)
-       // }
-        return json
+        var listarPublicacao = ArrayList<Publicacao>()
+
+        var publicacaoJson = responseBody!!.string()
+
+        var publicacaoArray = JSONArray(publicacaoJson)
+
+        for (i in 0 until publicacaoArray.length()){
+            val publicacaoJson = publicacaoArray.getJSONObject(i)
+            val publicacao = Publicacao(
+                publicacaoJson.optInt("id"),
+                publicacaoJson.optString("titulo"),
+                publicacaoJson.optString("descricao"),
+                publicacaoJson.optString("usuario_id")
+            )
+            listarPublicacao.add(publicacao)
+        }
+
+        return listarPublicacao
     }
+
 
 }

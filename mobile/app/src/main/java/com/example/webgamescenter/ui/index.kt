@@ -9,10 +9,9 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.webgamescenter.R
 import com.example.webgamescenter.adapter.PublicacaoReciclerAdapter
-import com.example.webgamescenter.data.Datasource
 import com.example.webgamescenter.http.HttpHelperPublicacao
-import com.example.webgamescenter.http.HttpHelperUsuario
 import kotlinx.android.synthetic.main.activity_index.*
+import kotlinx.android.synthetic.main.activity_loja.*
 import kotlinx.android.synthetic.main.toolbar.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -27,22 +26,25 @@ class index : AppCompatActivity(), View.OnClickListener {
         novoPost.setOnClickListener(this)
 
 
-        val token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjMsImlhdCI6MTYwNjMxMDU3Mn0.xfZsjHOPh69NQb_9ghUD2DsOqWQd_MczY8l1asTAsSM"
+        val token =
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjMsImlhdCI6MTYwNjMxMDU3Mn0.xfZsjHOPh69NQb_9ghUD2DsOqWQd_MczY8l1asTAsSM"
 
         // resgata as informaçoes gravadas no banco
-         doAsync {
+        doAsync {
             val http = HttpHelperPublicacao()
-            val res = http.getPublicacao(token)
+            val retorno = http.getPublicacao(token)
 
-             // println("%%%%%%%%%%% index " + res)
+            println("###### RETORNO INDEX " + retorno)
 
-             uiThread {
-                // if()
-             }
-         }
+            uiThread {
+                val recyclerView = recyclerViewPublicacao
+                recyclerView.layoutManager = LinearLayoutManager(applicationContext)
+                recyclerView.adapter = PublicacaoReciclerAdapter(retorno)
+            }
+
+        }
 
     }
-
 
 
     private fun insertToolbar() {
@@ -56,21 +58,21 @@ class index : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-       when (item.itemId) {
-           R.id.menuLoja -> {
-               val intent = Intent(this, loja::class.java)
-               startActivity(intent)
-               //Toast.makeText(this, "menu Loja", Toast.LENGTH_SHORT).show()
-           }
-           R.id.menuPerfil -> {
+        when (item.itemId) {
+            R.id.menuLoja -> {
+                val intent = Intent(this, loja::class.java)
+                startActivity(intent)
+                //Toast.makeText(this, "menu Loja", Toast.LENGTH_SHORT).show()
+            }
+            R.id.menuPerfil -> {
                 val intent = Intent(this, perfilUsuario::class.java)
-               startActivity(intent)
-           }
+                startActivity(intent)
+            }
             else -> {
                 onBackPressed()
             }
 
-       }
+        }
 
         return true
     }

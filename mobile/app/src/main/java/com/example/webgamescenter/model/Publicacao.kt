@@ -1,6 +1,11 @@
 package com.example.webgamescenter.model
 
-class Publicacao{
+class Publicacao(
+    optString: Int,
+    optString1: String,
+    optString2: String,
+    optString3: String
+) {
 
     var id = 0
     var titulo = ""

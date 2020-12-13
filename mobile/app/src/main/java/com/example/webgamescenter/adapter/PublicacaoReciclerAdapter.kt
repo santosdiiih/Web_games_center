@@ -6,9 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.webgamescenter.R
 import com.example.webgamescenter.model.Publicacao
-import kotlinx.android.synthetic.main.layout_card_publicacao_view_holder.view.*
 
-class PublicacaoReciclerAdapter  ( var listaPublicacao: ArrayList<Publicacao>) : RecyclerView.Adapter <PublicacaoReciclerAdapter.PublicacaoViewHolder> () {
+class PublicacaoReciclerAdapter(var listaPublicacao: List<Publicacao>) : RecyclerView.Adapter <PublicacaoReciclerAdapter.PublicacaoViewHolder> () {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PublicacaoViewHolder {
