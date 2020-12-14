@@ -4,16 +4,6 @@ import com.example.webgamescenter.model.Publicacao
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONArray
-import android.util.Log
-import com.example.webgamescenter.model.Estado
-import com.example.webgamescenter.model.Publicacao
-import com.example.webgamescenter.model.RespostaNovoUsuario
-import com.example.webgamescenter.model.RespostaPublicacao
-import com.google.gson.Gson
-import okhttp3.MediaType
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.RequestBody
 
 class HttpHelperPublicacao {
 
@@ -35,30 +25,17 @@ class HttpHelperPublicacao {
         val response = client.newCall(request).execute()
         //extraindo o body da requisicao
         val responseBody = response.body()
-        var listarPublicacao = ArrayList<Publicacao>()
+        val listarPublicacao = ArrayList<Publicacao>()
+        val publicacaoJson = responseBody!!.string()
+        val publicacaoArray = JSONArray(publicacaoJson)
 
-        var publicacaoJson = responseBody!!.string()
+        for (i in 0 until publicacaoArray.length()) {
+            var id = publicacaoArray.getJSONObject(i).getInt("id")
+            var titulo = publicacaoArray.getJSONObject(i).getString("titulo")
+            var descricao = publicacaoArray.getJSONObject(i).getString("descricao")
+            listarPublicacao.add(Publicacao(id, titulo, descricao))
 
-        var publicacaoArray = JSONArray(publicacaoJson)
-
-        for (i in 0 until publicacaoArray.length()){
-            val publicacaoJson = publicacaoArray.getJSONObject(i)
-            val publicacao = Publicacao(
-                publicacaoJson.optInt("id"),
-                publicacaoJson.optString("titulo"),
-                publicacaoJson.optString("descricao"),
-                publicacaoJson.optString("usuario_id")
-            )
-            listarPublicacao.add(publicacao)
         }
-
         return listarPublicacao
-        var json = responseBody!!.string()
-
-
-       val publicacao = Gson().fromJson(json, Array<Publicacao>::class.java).toList()
-        return publicacao
     }
-
-
 }
