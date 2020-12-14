@@ -4,6 +4,16 @@ import com.example.webgamescenter.model.Publicacao
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONArray
+import android.util.Log
+import com.example.webgamescenter.model.Estado
+import com.example.webgamescenter.model.Publicacao
+import com.example.webgamescenter.model.RespostaNovoUsuario
+import com.example.webgamescenter.model.RespostaPublicacao
+import com.google.gson.Gson
+import okhttp3.MediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
 
 class HttpHelperPublicacao {
 
@@ -23,10 +33,8 @@ class HttpHelperPublicacao {
 
         // enviar a requisição para o servidor
         val response = client.newCall(request).execute()
-
         //extraindo o body da requisicao
         val responseBody = response.body()
-
         var listarPublicacao = ArrayList<Publicacao>()
 
         var publicacaoJson = responseBody!!.string()
@@ -45,6 +53,11 @@ class HttpHelperPublicacao {
         }
 
         return listarPublicacao
+        var json = responseBody!!.string()
+
+
+       val publicacao = Gson().fromJson(json, Array<Publicacao>::class.java).toList()
+        return publicacao
     }
 
 

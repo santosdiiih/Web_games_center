@@ -22,10 +22,9 @@ class Publicacao(
         var primeiro_nome = ""
         var nickname = ""
     }
-
+){
     override fun toString(): String {
-        return "Publicacao(id=$id, titulo='$titulo', descricao='$descricao', imagem_video='$imagem_video', hashtag='$hashtag', createdAt='$createdAt', updatedAt='$updatedAt', usuario_id=$usuario_id, UsuarioId=$UsuarioId, Usuario=$Usuario)"
+        return "Publicacao(id=$id, titulo='$titulo', descricao='$descricao', imagem_video='$imagem_video', hashtag='$hashtag', createdAt='$createdAt', updatedAt='$updatedAt', usuario_id=$usuario_id)"
     }
-
 
 }

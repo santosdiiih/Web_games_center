@@ -38,6 +38,7 @@ class index : AppCompatActivity(), View.OnClickListener {
 
             uiThread {
                 val recyclerView = recyclerViewPublicacao
+
                 recyclerView.layoutManager = LinearLayoutManager(applicationContext)
                 recyclerView.adapter = PublicacaoReciclerAdapter(retorno)
             }
