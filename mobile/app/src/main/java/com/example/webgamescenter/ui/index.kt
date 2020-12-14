@@ -37,7 +37,8 @@ class index : AppCompatActivity(), View.OnClickListener {
             println("###### RETORNO INDEX " + retorno)
 
             uiThread {
-                val recyclerView = recyclerViewLoja
+                val recyclerView = recyclerViewPublicacao
+
                 recyclerView.layoutManager = LinearLayoutManager(applicationContext)
                 recyclerView.adapter = PublicacaoReciclerAdapter(retorno)
             }

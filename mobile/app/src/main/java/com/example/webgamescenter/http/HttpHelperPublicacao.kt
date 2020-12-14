@@ -1,5 +1,9 @@
 package com.example.webgamescenter.http
 
+import com.example.webgamescenter.model.Publicacao
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import org.json.JSONArray
 import android.util.Log
 import com.example.webgamescenter.model.Estado
 import com.example.webgamescenter.model.Publicacao
@@ -29,18 +33,32 @@ class HttpHelperPublicacao {
 
         // enviar a requisição para o servidor
         val response = client.newCall(request).execute()
-
         //extraindo o body da requisicao
         val responseBody = response.body()
+        var listarPublicacao = ArrayList<Publicacao>()
 
+        var publicacaoJson = responseBody!!.string()
+
+        var publicacaoArray = JSONArray(publicacaoJson)
+
+        for (i in 0 until publicacaoArray.length()){
+            val publicacaoJson = publicacaoArray.getJSONObject(i)
+            val publicacao = Publicacao(
+                publicacaoJson.optInt("id"),
+                publicacaoJson.optString("titulo"),
+                publicacaoJson.optString("descricao"),
+                publicacaoJson.optString("usuario_id")
+            )
+            listarPublicacao.add(publicacao)
+        }
+
+        return listarPublicacao
         var json = responseBody!!.string()
 
 
        val publicacao = Gson().fromJson(json, Array<Publicacao>::class.java).toList()
-
-        println("####### HTTP PUB  " + publicacao)
-
         return publicacao
     }
+
 
 }
