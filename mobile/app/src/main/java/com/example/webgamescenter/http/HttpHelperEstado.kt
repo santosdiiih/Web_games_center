@@ -10,7 +10,7 @@ class HttpHelperEstado {
 
     fun getEstados() : List<Estado> {
         // definir a URL do servidor
-        val URL = "http://192.168.100.106:3333/estados"
+        val URL = "https://web-center-games.herokuapp.com/estados"
 
         // criando um cliente que dispara a requisição
         val client = OkHttpClient()

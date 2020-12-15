@@ -12,7 +12,7 @@ import okhttp3.RequestBody
 class HttpHelperLogin {
 
     // determina a url a ser solicitada
-    val URL = "http://192.168.100.106:3333/sessao"
+    val URL = "https://web-center-games.herokuapp.com/sessao"
 
     // criando um cliente http
     val usuario = OkHttpClient()
