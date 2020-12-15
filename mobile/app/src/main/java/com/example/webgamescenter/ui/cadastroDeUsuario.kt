@@ -82,7 +82,7 @@ class cadastroDeUsuario : AppCompatActivity(), View.OnClickListener, AdapterView
         // convertendo o objeto usuario em um gson
         var usuarioJson = gson.toJson(usuario)
 
-        println("########## usuarioJson" + usuarioJson)
+        //println("########## usuarioJson" + usuarioJson)
 
         doAsync {
             val http = HttpHelperUsuario()
