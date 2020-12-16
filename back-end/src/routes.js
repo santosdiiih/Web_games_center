@@ -34,7 +34,7 @@ routes.get("/sexo", sexoController.index);
 routes.get("/genero", generoController.list);
 
 // Rota de itens
-routes.post("/loja/:itemId/item", Multer.single("imagem"), itemController.store);
+routes.post("/loja/:itemId/item", Multer.single("imagem"), uploadImagem, itemController.store);
 routes.get("/loja/:itemId/item", itemController.list);
 routes.delete("/loja/:itemId/item/:idItem", itemController.delete);
 routes.put("/loja/:itemId/item/:idItem", itemController.editar);

@@ -16,8 +16,9 @@ module.exports = {
     async store(request, response) {
 
         const { itemId } = request.params;
+        const {firebaseUrl} = request.file ? request.file: "";
 
-        const { nome, imagem, descricao, valor, quantidade_de_item } = request.body;
+        const { nome, descricao, valor, quantidade_de_item } = request.body;
 
         const loja = await Loja.findByPk(itemId);
 
@@ -26,7 +27,7 @@ module.exports = {
 
 
         let itens = await loja.createItem(
-            { nome, imagem, descricao, valor, quantidade_de_item });
+            { nome, imagem: firebaseUrl, descricao, valor, quantidade_de_item });
 
         response.status(201).send({
             itens: {
